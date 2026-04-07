@@ -3,10 +3,10 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/bureau-of-ocean-energy-management/refs/heads/main/apis.yml
 name: Bureau of Ocean Energy Management
 tags:
-  - Federal Government
-  - Oceans
-  - Marine
   - Energy
+  - Federal Government
+  - Marine
+  - Oceans
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
