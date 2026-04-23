@@ -6,6 +6,7 @@ The Bureau of Ocean Energy Management (BOEM) manages the nation's offshore resou
 ## Scope
 
 - **Type:** Index
+- **x-type:** government
 - **Position:** Consumer
 - **Access:** 3rd-Party
 
@@ -22,7 +23,7 @@ The Bureau of Ocean Energy Management (BOEM) manages the nation's offshore resou
 ## Timestamps
 
 - **Created:** 2024-11-30
-- **Modified:** 2026-04-21
+- **Modified:** 2026-04-23
 
 ## APIs
 
@@ -90,6 +91,7 @@ ESPIS provides access to BOEM's environmental studies data, including research r
 - [Portal](https://marinecadastre.gov/)
 - [Privacy Policy](https://www.boem.gov/privacy-policy)
 - [Mapping and Data](https://www.boem.gov/oil-gas-energy/mapping-and-data)
+- [Data Portal](https://catalog.data.gov/dataset?organization=boem-gov)
 
 ## Maintainers
 

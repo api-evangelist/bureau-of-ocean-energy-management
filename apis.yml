@@ -11,10 +11,11 @@ tags:
   - Offshore
   - Environmental
 type: Index
+x-type: government
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-30'
-modified: '2026-04-21'
+modified: '2026-04-23'
 position: Consumer
 description: >-
   The Bureau of Ocean Energy Management (BOEM) manages the nation's offshore
@@ -67,6 +68,8 @@ apis:
     properties:
       - url: https://www.boem.gov/oil-gas-energy/mapping-and-data
         type: Documentation
+      - url: https://catalog.data.gov/dataset?organization=boem-gov
+        type: DataAPI
     description: >-
       BOEM provides ArcGIS REST Services exposing geospatial data for the Outer
       Continental Shelf (OCS) regions. Data includes active leases, offshore
@@ -118,6 +121,8 @@ common:
     url: https://www.boem.gov/privacy-policy
   - type: Mapping and Data
     url: https://www.boem.gov/oil-gas-energy/mapping-and-data
+  - type: Data Portal
+    url: https://catalog.data.gov/dataset?organization=boem-gov
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
