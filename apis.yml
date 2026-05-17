@@ -11,7 +11,7 @@ tags:
   - Offshore
   - Environmental
 type: Index
-x-type: government
+kind: government
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-30'
@@ -117,7 +117,7 @@ common:
     url: https://www.boem.gov
   - type: Portal
     url: https://marinecadastre.gov/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.boem.gov/privacy-policy
   - type: Mapping and Data
     url: https://www.boem.gov/oil-gas-energy/mapping-and-data
