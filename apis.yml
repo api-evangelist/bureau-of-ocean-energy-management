@@ -113,6 +113,8 @@ apis:
       - Academic marine research
       - Policy development
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/boemgov
   - type: Website
     url: https://www.boem.gov
   - type: Portal
