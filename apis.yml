@@ -37,7 +37,7 @@ apis:
       - url: https://hub.marinecadastre.gov/
         type: Portal
       - url: https://marinecadastre.gov/oceanreports
-        type: Tool
+        type: Tools
     description: >-
       MarineCadastre.gov is the authoritative source for marine cadastre data
       and services. It provides an interactive map viewer with integrated
