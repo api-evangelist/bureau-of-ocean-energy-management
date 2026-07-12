@@ -113,6 +113,10 @@ apis:
       - Academic marine research
       - Policy development
 common:
+  - type: VulnerabilityDisclosure
+    url: security/bureau-of-ocean-energy-management-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/bureau-of-ocean-energy-management-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/boemgov
   - type: Website
@@ -125,6 +129,8 @@ common:
     url: https://www.boem.gov/oil-gas-energy/mapping-and-data
   - type: Data Portal
     url: https://catalog.data.gov/dataset?organization=boem-gov
+  - url: https://www.boem.gov/rss.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
