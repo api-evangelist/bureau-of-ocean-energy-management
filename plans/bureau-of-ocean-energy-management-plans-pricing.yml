@@ -3,165 +3,48 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Bureau of Ocean Energy Management
 providerId: bureau-of-ocean-energy-management
+generated: '2026-09-05'
+method: searched
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Energy
-  - Federal Government
-  - Marine
-  - Oceans
-  - GIS
-  - Offshore
-  - Environmental
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: bureau-of-ocean-energy-management-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Bureau of Ocean Energy Management API surface. Intended for evaluation,
-      prototyping, and low-volume integrations. Real limits and pricing must be reconciled with the provider's
-      published plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: MarineCadastre.gov
-      - name: BOEM ArcGIS REST Services
-      - name: Environmental Studies Program Information System (ESPIS)
-  - id: bureau-of-ocean-energy-management-pro
-    name: Professional
-    type: paid
-    description: Production tier for Bureau of Ocean Energy Management. Provides higher quotas, priority
-      support, and access to the broader API portfolio. Pricing placeholder; align with the provider's
-      pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: MarineCadastre.gov
-      - name: BOEM ArcGIS REST Services
-      - name: Environmental Studies Program Information System (ESPIS)
-  - id: bureau-of-ocean-energy-management-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Bureau of Ocean Energy Management. Includes dedicated capacity,
-      contractual SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://hub.marinecadastre.gov/
-          - https://gis.boem.gov/arcgis/rest/services/
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: MarineCadastre.gov
-      - name: BOEM ArcGIS REST Services
-      - name: Environmental Studies Program Information System (ESPIS)
+modified: '2026-09-05'
+source: >-
+  https://www.boem.gov/oil-gas-energy/mapping-and-data,
+  https://www.boem.gov/about-boem/copyright-restrictions-and-permissions,
+  https://www.boem.gov/about-boem/procurement-business-opportunities/fees-services,
+  and anonymous live calls against https://gis.boem.gov/server/rest/services (all 2026-09-05)
+note: |
+  REPLACES A SCAFFOLD. Until this pass this file carried three invented tiers — a "Free"
+  tier at 1,000 requests/month, a "Professional" tier at 100,000 with a "TBD" overage price,
+  and an "Enterprise" tier with a named account manager. None of that exists. It was written
+  by the 2026-05-04 bulk sweep and stamped `method: generated`; it is removed here rather than
+  left to be read as BOEM's pricing.
+
+  THE TRUTH: BOEM publishes no plans, no tiers, no pricing and no metering of any kind for its
+  data services. There is no signup, no API key, no account and no paid tier. Every surface
+  answered an anonymous request on 2026-09-05. As a US federal agency BOEM's public data is
+  released as US Government work in the public domain; its own copyright page states the
+  material is generally not copyrighted and may be used freely with credit.
+
+  The "Fees for Services" page on boem.gov concerns procurement and FOIA-style cost recovery
+  for agency services, not API or data access, and is not a pricing page.
+plan_count: 0
+pricing_model: free-public-domain
+requires_account: false
+requires_api_key: false
+plans: []
+evidence:
+  - url: https://gis.boem.gov/server/rest/services?f=json
+    status: 200
+    observation: anonymous request returned the full service catalog; no key, token or account required
+  - url: https://gis.boem.gov/server/rest/services/BOEM_BSEE/ATL_Layers/MapServer/0/query?where=1%3D1&returnCountOnly=true&f=json
+    status: 200
+    observation: anonymous feature query returned {"count":975}
+  - url: https://hub.marinecadastre.gov/data.json
+    status: 200
+    observation: anonymous DCAT-US 1.1 catalog of 275 datasets
+  - url: https://www.boem.gov/about-boem/copyright-restrictions-and-permissions
+    status: 200
+    observation: BOEM's copyright, restrictions and permissions statement
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

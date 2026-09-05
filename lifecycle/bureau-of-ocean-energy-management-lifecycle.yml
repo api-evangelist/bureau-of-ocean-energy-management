@@ -1,0 +1,75 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://www.boem.gov/oil-gas-energy/mapping-and-data,
+  https://www.boem.gov/renewable-energy/mapping-and-data,
+  https://www.boem.gov/about-boem/disclaimer-liability-and-endorsement,
+  https://www.boem.gov/operating-status, and live probes of gis.boem.gov 2026-09-05
+note: |
+  BOEM publishes NO API lifecycle policy of any kind. There is no versioning policy, no
+  deprecation policy, no Sunset or Deprecation header (RFC 8594) on any observed response, no
+  SLA, no service status page and no changelog for the data services. This is not an oversight
+  we can guess around — it is the finding.
+
+  Two pages exist that a sweep could mistake for lifecycle documents, and both are recorded here
+  so they are not miswired:
+    * https://www.boem.gov/operating-status is the AGENCY's office open/closed notice
+      (it read "Operating Status: Open" on 2026-09-05). It says nothing about API or service
+      availability. No StatusPage pointer is wired on the strength of it.
+    * https://www.boem.gov/about-boem/disclaimer-liability-and-endorsement is a US federal
+      disclaimer of liability and endorsement. It is the closest thing BOEM has to terms of
+      service and is wired as TermsOfService, but it carries no availability commitment.
+versioning:
+  policy_published: false
+  scheme: product-version, not API-version
+  detail: >-
+    No version appears in any URL. The ArcGIS REST directory reports currentVersion 11.3; WMS is
+    served at 1.3.0 and WFS at 2.0.0, each negotiable with the standard `version=` parameter.
+    Breaking change therefore arrives as an Esri platform upgrade or a service republish, with
+    no announcement channel.
+  evidence: >-
+    https://gis.boem.gov/server/rest/services?f=json returned {"currentVersion":11.3,...} on
+    2026-09-05
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  evidence: >-
+    no Sunset, Deprecation or Link rel="deprecation" header was present on any response observed
+    on 2026-09-05. Do NOT wire a Deprecation pointer for this provider.
+  observed_decay:
+    - surface: BOEM_BSEE/MMC_Layers
+      note: >-
+        the Marine Minerals regional service still publishes "Proposed Final OCS Oil and Gas
+        Leasing Program 2012-2017", "OCS Proposed Final Program Areas 2017-2022", "2009 Vessel
+        Traffic (AIS)" and "2010 Vessel Traffic (AIS)" as live layers. These describe expired
+        leasing programs and 16-year-old vessel traffic. Nothing in the contract marks them
+        superseded — an agent reading the layer list cannot tell current data from historic.
+    - surface: layer id numbering
+      note: >-
+        MMC_Layers layer ids are non-contiguous (0,1,2,4,5,7,8,10,11,12,15,19,20,21,22,23,29,31)
+        and GOA_Layers skips id 10 — the gaps are removed layers with no tombstone. Enumerate
+        ids from the MapServer document; never assume a range.
+sla:
+  published: false
+status_page:
+  published: false
+  note: >-
+    no service status page, no status.* host, no uptime history. The only status surface is the
+    agency operating-status page described above, which is not an API status signal.
+changelog:
+  published: false
+  note: >-
+    no dated changelog for the data services. https://www.boem.gov/rss.xml is a newsroom feed
+    (HTTP 200, application/rss+xml) covering agency press releases, not service changes — it is
+    wired as Blog, not as ChangeLog.
+support:
+  channel: general agency contact only
+  url: https://www.boem.gov/about-boem/contact-us
+  note: >-
+    there is no developer support channel, no forum, no issue tracker and no GitHub organisation
+    for BOEM. A consumer with a question about the WFS defect recorded in conformance/ has no
+    technical route to report it.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

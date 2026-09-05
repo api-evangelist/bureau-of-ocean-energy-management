@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:WFS_Capabilities
+  xmlns="http://www.opengis.net/wfs/2.0"
+  xmlns:wfs="http://www.opengis.net/wfs/2.0"
+  xmlns:ows="http://www.opengis.net/ows/1.1"
+  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:BOEM_BSEE_GOA_Layers="https://ioenolwpvxgis01.mms.doi.net:6443/arcgis/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  version="2.0.0"  xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd https://ioenolwpvxgis01.mms.doi.net:6443/arcgis/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?service=wfs%26version=2.0.0%26request=DescribeFeatureType"
+>
+  <ows:ServiceIdentification>
+    <ows:Title>WFS</ows:Title>
+    <ows:Abstract></ows:Abstract>
+    <ows:Keywords>
+      <ows:Keyword>ESRI(LongLat)</ows:Keyword>
+    </ows:Keywords>
+    <ows:ServiceType>WFS</ows:ServiceType>
+    <ows:ServiceTypeVersion>2.0.0</ows:ServiceTypeVersion>
+    <ows:Fees></ows:Fees>
+    <ows:AccessConstraints></ows:AccessConstraints>
+  </ows:ServiceIdentification>
+  <ows:ServiceProvider>
+    <ows:ProviderName></ows:ProviderName>
+    <ows:ServiceContact>
+      <ows:IndividualName></ows:IndividualName>
+      <ows:PositionName></ows:PositionName>
+      <ows:ContactInfo>
+        <ows:Phone>
+          <ows:Voice></ows:Voice>
+          <ows:Facsimile></ows:Facsimile>
+        </ows:Phone>
+        <ows:Address>
+          <ows:DeliveryPoint></ows:DeliveryPoint>
+          <ows:City></ows:City>
+          <ows:AdministrativeArea></ows:AdministrativeArea>
+          <ows:PostalCode></ows:PostalCode>
+          <ows:Country></ows:Country>
+          <ows:ElectronicMailAddress></ows:ElectronicMailAddress>
+        </ows:Address>
+        <ows:OnlineResource xlink:href="https://ioenolwpvxgis01.mms.doi.net:6443/arcgis/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        <ows:HoursOfService></ows:HoursOfService>
+        <ows:ContactInstructions></ows:ContactInstructions>
+      </ows:ContactInfo>
+      <ows:Role></ows:Role>
+    </ows:ServiceContact>
+  </ows:ServiceProvider>
+  <ows:OperationsMetadata>
+    <ows:Operation name="GetCapabilities">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="AcceptVersions">
+        <ows:AllowedValues>
+          <ows:Value>1.0.0</ows:Value>
+          <ows:Value>1.1.0</ows:Value>
+          <ows:Value>2.0.0</ows:Value>
+      </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="DescribeFeatureType">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+    <ows:Parameter name="outputFormat">
+      <ows:AllowedValues>
+        <ows:Value>text/xml; subtype=gml/3.2</ows:Value>
+      </ows:AllowedValues>
+    </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetPropertyValue">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="resolve">
+        <ows:AllowedValues>
+          <ows:Value>none</ows:Value>
+          <ows:Value>local</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetFeature">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="resultType">
+        <ows:AllowedValues>
+          <ows:Value>results</ows:Value>
+          <ows:Value>hits</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>GML32</ows:Value>
+          <ows:Value>GML32+ZIP</ows:Value>
+          <ows:Value>GML32+GZIP</ows:Value>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>GML3</ows:Value>
+          <ows:Value>GML3+ZIP</ows:Value>
+          <ows:Value>GML3+GZIP</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>GML2</ows:Value>
+          <ows:Value>GML2+ZIP</ows:Value>
+          <ows:Value>GML2+GZIP</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+          <ows:Value>GEOJSON</ows:Value>
+          <ows:Value>GEOJSON+ZIP</ows:Value>
+          <ows:Value>GEOJSON+GZIP</ows:Value>
+          <ows:Value>ESRIGEOJSON</ows:Value>
+          <ows:Value>ESRIGEOJSON+ZIP</ows:Value>
+          <ows:Value>ESRIGEOJSON+GZIP</ows:Value>
+          <ows:Value>KML</ows:Value>
+          <ows:Value>application/vnd.google-earth.kml xml</ows:Value>
+          <ows:Value>application/vnd.google-earth.kml+xml</ows:Value>
+          <ows:Value>KMZ</ows:Value>
+          <ows:Value>application/vnd.google-earth.kmz</ows:Value>
+          <ows:Value>SHAPE+ZIP</ows:Value>
+          <ows:Value>CSV</ows:Value>
+          <ows:Value>CSV+ZIP</ows:Value>
+          <ows:Value>CSV+GZIP</ows:Value>
+          <ows:Value>Geopackage</ows:Value>
+          <ows:Value>Geopackage+ZIP</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+      <ows:Parameter name="resolve">
+        <ows:AllowedValues>
+          <ows:Value>none</ows:Value>
+          <ows:Value>local</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetGmlObject">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="ListStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="DescribeStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?"/>
+          <ows:Post xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Constraint name="ImplementsBasicWFS"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsTransactionalWFS"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsLockingWFS"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="KVPEncoding"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="XMLEncoding"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="SOAPEncoding"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsInheritance"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsRemoteResolve"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsResultPaging"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsStandardJoins"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsSpatialJoins"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsTemporalJoins"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ImplementsFeatureVersioning"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+    <ows:Constraint name="ManageStoredQueries"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></ows:Constraint>
+  </ows:OperationsMetadata>
+  <wfs:FeatureTypeList>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:OCS_Drilling_Platforms</wfs:Name>
+    <wfs:Title>OCS_Drilling_Platforms</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-148.69772603 -0.00000284</ows:LowerCorner>
+      <ows:UpperCorner>90.36562297 70.49042956</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:OCS_Oil_and_Natural_Gas_Wells</wfs:Name>
+    <wfs:Title>OCS_Oil_and_Natural_Gas_Wells</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-97.20316854 -0.00000285</ows:LowerCorner>
+      <ows:UpperCorner>0.00002030 30.19613051</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:OCS_Oil___Gas_Pipelines</wfs:Name>
+    <wfs:Title>OCS_Oil___Gas_Pipelines</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-120.73030331 0.01318073</ows:LowerCorner>
+      <ows:UpperCorner>96.23841658 56.75043827</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:BOEM_Limit_of_OCSLA_8_g__zone</wfs:Name>
+    <wfs:Title>BOEM_Limit_of_OCSLA_8_g__zone</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-172.07083233 24.34521805</ows:LowerCorner>
+      <ows:UpperCorner>-66.95117053 71.48902573</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:Submerged_Lands_Act_Boundary</wfs:Name>
+    <wfs:Title>Submerged_Lands_Act_Boundary</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-171.95932105 24.39538894</ows:LowerCorner>
+      <ows:UpperCorner>-66.91076524 71.43922104</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:BOEM_OCS_Protraction_Diagrams___Leasing_Maps</wfs:Name>
+    <wfs:Title>BOEM_OCS_Protraction_Diagrams___Leasing_Maps</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-180.00000000 23.81799646</ows:LowerCorner>
+      <ows:UpperCorner>180.00000000 74.99641111</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:BOEM_OCS_Lease_Blocks</wfs:Name>
+    <wfs:Title>BOEM_OCS_Lease_Blocks</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-97.21149431 23.82324612</ows:LowerCorner>
+      <ows:UpperCorner>-81.13739305 30.24640468</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:BOEM_Oil_and_Gas_Leases</wfs:Name>
+    <wfs:Title>BOEM_Oil_and_Gas_Leases</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-152.66000629 25.92743245</ows:LowerCorner>
+      <ows:UpperCorner>-85.36377370 70.55543083</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:BOEM_Oil_and_Gas_Planning_Areas</wfs:Name>
+    <wfs:Title>BOEM_Oil_and_Gas_Planning_Areas</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-180.00000000 23.81799646</ows:LowerCorner>
+      <ows:UpperCorner>180.00000000 74.99641111</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:Seismic_Anomalies</wfs:Name>
+    <wfs:Title>Seismic_Anomalies</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4269</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-96.78312106 25.77844569</ows:LowerCorner>
+      <ows:UpperCorner>-85.50068647 29.26464224</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  <wfs:FeatureType>
+    <wfs:Name>BOEM_BSEE_GOA_Layers:BOEM_Oil_and_Gas_Lease_Points</wfs:Name>
+    <wfs:Title>BOEM_Oil_and_Gas_Lease_Points</wfs:Title>
+    <wfs:DefaultCRS>urn:ogc:def:crs:EPSG::4267</wfs:DefaultCRS>
+    <ows:WGS84BoundingBox>
+      <ows:LowerCorner>-97.10295123 25.96934939</ows:LowerCorner>
+      <ows:UpperCorner>-85.40920391 30.19514542</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+  </wfs:FeatureType>
+  </wfs:FeatureTypeList>
+  <fes:Filter_Capabilities>
+  <fes:Conformance>
+    <fes:Constraint name="ImplementsQuery"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsAdHocQuery"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsFunctions"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsResourceId"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsMinStandardFilter"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsStandardFilter"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsMinSpatialFilter"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsSpatialFilter"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsMinTemporalFilter"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsTemporalFilter"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsVersionNav"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsSorting"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsExtendedOperators"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsMinimumXPath"><ows:NoValues/><ows:DefaultValue>TRUE</ows:DefaultValue></fes:Constraint>
+    <fes:Constraint name="ImplementsSchemaElementFunc"><ows:NoValues/><ows:DefaultValue>FALSE</ows:DefaultValue></fes:Constraint>
+  </fes:Conformance>
+  <fes:Id_Capabilities>
+    <fes:ResourceIdentifier name="fes:ResourceId"/>
+  </fes:Id_Capabilities>
+  <fes:Scalar_Capabilities>
+    <fes:LogicalOperators/>
+    <fes:ComparisonOperators>
+      <fes:ComparisonOperator name="PropertyIsEqualTo"/>
+      <fes:ComparisonOperator name="PropertyIsNotEqualTo"/>
+      <fes:ComparisonOperator name="PropertyIsLessThan"/>
+      <fes:ComparisonOperator name="PropertyIsGreaterThan"/>
+      <fes:ComparisonOperator name="PropertyIsLessThanOrEqualTo"/>
+      <fes:ComparisonOperator name="PropertyIsGreaterThanOrEqualTo"/>
+      <fes:ComparisonOperator name="PropertyIsLike"/>
+      <fes:ComparisonOperator name="PropertyIsNull"/>
+      <fes:ComparisonOperator name="PropertyIsNil"/>
+      <fes:ComparisonOperator name="PropertyIsBetween"/>
+    </fes:ComparisonOperators>
+  </fes:Scalar_Capabilities>
+  <fes:Spatial_Capabilities>
+    <fes:GeometryOperands xmlns:gml="http://www.opengis.net/gml" xmlns:gml32="http://www.opengis.net/gml">
+      <fes:GeometryOperand name="gml:Box"/>
+      <fes:GeometryOperand name="gml:Envelope"/>
+      <fes:GeometryOperand name="gml:Point"/>
+      <fes:GeometryOperand name="gml:LineString"/>
+      <fes:GeometryOperand name="gml:LinearRing"/>
+      <fes:GeometryOperand name="gml:Polygon"/>
+      <fes:GeometryOperand name="gml:MultiPoint"/>
+      <fes:GeometryOperand name="gml:MultiCurve"/>
+      <fes:GeometryOperand name="gml:MultiSurface"/>
+    </fes:GeometryOperands>
+    <fes:SpatialOperators>
+      <fes:SpatialOperator name="BBOX"/>
+      <fes:SpatialOperator name="Equals"/>
+      <fes:SpatialOperator name="Disjoint"/>
+      <fes:SpatialOperator name="Intersects"/>
+      <fes:SpatialOperator name="Touches"/>
+      <fes:SpatialOperator name="Crosses"/>
+      <fes:SpatialOperator name="Within"/>
+      <fes:SpatialOperator name="Contains"/>
+      <fes:SpatialOperator name="Overlaps"/>
+      <fes:SpatialOperator name="Beyond"/>
+      <fes:SpatialOperator name="DWithin"/>
+    </fes:SpatialOperators>
+  </fes:Spatial_Capabilities>
+  </fes:Filter_Capabilities>
+</wfs:WFS_Capabilities>

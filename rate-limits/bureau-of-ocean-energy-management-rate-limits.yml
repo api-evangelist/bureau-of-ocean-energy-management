@@ -3,102 +3,67 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Bureau of Ocean Energy Management
 providerId: bureau-of-ocean-energy-management
+generated: '2026-09-05'
+method: probed
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Energy
-  - Federal Government
-  - Marine
-  - Oceans
-  - GIS
-  - Offshore
-  - Environmental
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Bureau of Ocean Energy Management API surface.
-  Captures per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold
-  values to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - MarineCadastre.gov
-      - BOEM ArcGIS REST Services
-      - Environmental Studies Program Information System (ESPIS)
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - MarineCadastre.gov
-      - BOEM ArcGIS REST Services
-      - Environmental Studies Program Information System (ESPIS)
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - MarineCadastre.gov
-      - BOEM ArcGIS REST Services
-      - Environmental Studies Program Information System (ESPIS)
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - MarineCadastre.gov
-      - BOEM ArcGIS REST Services
-      - Environmental Studies Program Information System (ESPIS)
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - MarineCadastre.gov
-      - BOEM ArcGIS REST Services
-      - Environmental Studies Program Information System (ESPIS)
+modified: '2026-09-05'
+source: >-
+  live unauthenticated calls against https://gis.boem.gov/server/rest/services and
+  https://gis.boem.gov/server/services on 2026-09-05, with full response headers captured;
+  plus a search of boem.gov and marinecadastre.gov for any published limits
+note: |
+  REPLACES A SCAFFOLD. Until this pass this file declared per-tier limits (10 rpm free,
+  100 rpm professional, 1,000 rpm enterprise), an X-RateLimit-* header family and a 429
+  exhaustion code. None of it was observed and none of it is published — it came from the
+  2026-05-04 bulk sweep stamped `method: generated`. It is removed rather than left to be
+  read as BOEM's runtime contract.
+
+  THE TRUTH: BOEM documents no rate limits anywhere, and the services emit no rate-limit
+  signal. A full header capture on 2026-09-05 returned Cache-Control, ETag, Vary,
+  X-Content-Type-Options, Strict-Transport-Security, Connection, Keep-Alive and a TS01*
+  load-balancer cookie — no X-RateLimit-*, no RateLimit-*, no Retry-After.
+
+  An honest zero is the finding, and it is a real risk to a consumer: with no published limit
+  and no runtime signal, an agent has no way to learn it is being throttled except by a request
+  failing. The one real ceiling on the surface is not a rate limit at all — it is
+  maxRecordCount 10000 per feature query, a PAGE size, reported by every layer and paired with
+  `exceededTransferLimit` in the response body.
+limit_count: 0
+documented: false
+headers: {}
+responseCodes: {}
+limits: []
+observed_headers:
+  - Cache-Control: max-age=0,must-revalidate
+  - ETag
+  - Vary: Origin
+  - X-Content-Type-Options: nosniff
+  - Strict-Transport-Security: max-age=31536000; includeSubDomains
+transfer_ceilings:
+  - surface: ArcGIS REST feature query
+    field: maxRecordCount
+    value: 10000
+    signal: exceededTransferLimit (boolean, in the response body)
+    note: >-
+      a per-request page size, not a rate limit. Page with resultOffset / resultRecordCount;
+      the layer reports advancedQueryCapabilities.supportsPagination true.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Conditional GET
+    description: >-
+      responses carry ETag with must-revalidate. Poll with If-None-Match rather than refetching;
+      it is the only cooperative behaviour the surface actually supports.
+  - name: Unknown ceiling
+    description: >-
+      no throttle is documented or signalled. Treat unexplained failures as possible
+      server-side load shedding and back off exponentially with jitter, because nothing on the
+      wire will tell you otherwise.
+evidence:
+  - url: https://gis.boem.gov/server/rest/services/BOEM_BSEE/ATL_Layers/MapServer/0/query?where=1%3D1&returnCountOnly=true&f=json
+    status: 200
+    observation: full header capture 2026-09-05 — no rate-limit header of any family present
+  - url: https://gis.boem.gov/server/rest/services/BOEM_BSEE/ATL_Layers/MapServer/0?f=json
+    status: 200
+    observation: maxRecordCount 10000; supportsPagination true
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

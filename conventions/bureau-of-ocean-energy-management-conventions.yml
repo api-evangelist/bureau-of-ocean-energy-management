@@ -1,0 +1,123 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  live probes 2026-09-05 of the ArcGIS REST and OGC WMS/WFS surfaces on gis.boem.gov, the
+  eleven GetCapabilities documents in openapi/, and the DCAT-US catalogs on the two ArcGIS Hub
+  hosts
+note: |
+  BOEM publishes no API design guide, no developer portal and no conventions page. Every
+  convention below is either observed live or is the upstream product standard the surface
+  implements (Esri ArcGIS REST 11.3, OGC WMS 1.3.0 / WFS 2.0.0, DCAT-US 1.1). Where a
+  convention does not exist it is recorded as absent rather than guessed.
+
+  THE WHOLE SURFACE IS READ-ONLY. Every service reports capabilities "Map,Query,Data" — no
+  Create, Update, Delete, Editing or Sync. There is no write operation anywhere on the public
+  estate, which is why idempotency, reversibility and dry-run are all `na` below rather than
+  `none`: there is nothing to make idempotent, nothing to reverse and nothing to rehearse.
+authentication:
+  style: none
+  detail: authentication/bureau-of-ocean-energy-management-authentication.yml
+idempotency:
+  coverage: na
+  supported: false
+  note: >-
+    No write surface exists — every MapServer and FeatureServer reports capabilities
+    "Map,Query,Data" with no Editing capability, so there is no mutating operation to protect.
+    No Idempotency-Key header is documented or accepted. Do NOT wire an Idempotency pointer for
+    this provider.
+reversibility:
+  grade: na
+  note: >-
+    The API is read-only. There is no create, update or delete operation on any public BOEM
+    surface, therefore no action an agent can take that would need taking back. Recorded as
+    `na` so it leaves the denominator rather than scoring a zero the provider has not earned.
+  write_surfaces: []
+dry_run_mode:
+  supported: na
+  note: read-only surface; nothing to rehearse.
+pagination:
+  - surface: ArcGIS REST feature query
+    style: offset
+    params: [resultOffset, resultRecordCount]
+    response_fields: [exceededTransferLimit, features]
+    limits:
+      maxRecordCount: 10000
+    evidence: >-
+      probed 2026-09-05 — every layer inspected on BOEM_BSEE/*_Layers reports maxRecordCount
+      10000 and advancedQueryCapabilities.supportsPagination true;
+      ATL_Layers/MapServer/0/query?where=1=1&returnCountOnly=true returned {"count":975}
+  - surface: OGC WFS 2.0.0
+    style: index
+    params: [count, startIndex]
+    evidence: standard WFS 2.0.0 paging parameters; the service advertises WFS 2.0.0 capabilities
+  - surface: DCAT-US catalog
+    style: none
+    note: >-
+      hub.marinecadastre.gov/data.json is a single 1.85 MB document containing all 275 datasets.
+      There is no paging; consumers download the whole catalog.
+filtering:
+  - surface: ArcGIS REST
+    params: [where, geometry, geometryType, inSR, outSR, outFields, returnGeometry, time]
+    note: >-
+      SQL-style `where` clause plus spatial geometry filters. Layers report
+      useStandardizedQueries true, supportsStatistics true, supportsOrderBy true and
+      supportsCountDistinct true.
+  - surface: OGC WFS
+    params: [typeNames, bbox, srsName, filter]
+    note: OGC Filter Encoding 2.0 (xmlns:fes="http://www.opengis.net/fes/2.0")
+  - surface: OGC WMS
+    params: [layers, bbox, crs, width, height, format, styles]
+content_negotiation:
+  style: query parameter, not Accept header
+  detail: >-
+    ArcGIS REST selects the representation with `f` — html is the DEFAULT, so a request without
+    `f=json` returns an HTML services-directory page with HTTP 200. This is the single most
+    common way a machine consumer silently gets markup instead of data here. OGC services select
+    with `format` (WMS) and `outputFormat` (WFS). No Accept-header negotiation is honoured.
+  formats:
+    arcgis: [html, json, pjson, geojson, pbf, image, kmz]
+    wms_getmap: [image/png, image/png8, image/png24, image/png32, image/jpeg, image/gif, image/bmp, image/tiff, image/svg+xml]
+    wms_getfeatureinfo: [application/geo+json, application/vnd.ogc.wms_xml, text/xml, text/html]
+    wfs_getfeature: ['application/gml+xml; version=3.2', 'text/xml; subtype=gml/3.2', 'text/xml; subtype=gml/3.1.1', 'text/xml; subtype=gml/2.1.2', GML2, GML3, GML32]
+field_selection:
+  supported: true
+  note: ArcGIS `outFields` (comma list or `*`). WFS has no sparse-fieldset parameter.
+expansion:
+  supported: false
+metadata:
+  user_defined: false
+request_id_tracing:
+  supported: false
+  note: >-
+    no X-Request-Id, X-Correlation-Id or equivalent header was observed on any response. The
+    only correlatable header is ETag.
+versioning:
+  style: path segment on the service, not on the API
+  detail: >-
+    There is no API version in any URL. Versioning is per-PRODUCT: the ArcGIS REST directory
+    reports currentVersion 11.3, WMS is pinned at 1.3.0 and WFS at 2.0.0, each negotiable with
+    the standard `version=` parameter. Service and layer identifiers (BOEM_BSEE/ATL_Layers,
+    layer id 0..N) are the stable addressing scheme, and layer ids are NOT contiguous — MMC_Layers
+    skips 3, 6, 9, 13, 14, 16-18 — so enumerate them, never assume a range.
+  detail_ref: lifecycle/bureau-of-ocean-energy-management-lifecycle.yml
+error_envelope:
+  shape: vendor
+  detail: errors/bureau-of-ocean-energy-management-problem-types.yml
+  caution: >-
+    the ArcGIS surface returns HTTP 200 with an error object in the body. Parse the body; the
+    status line lies.
+rate_limit_signaling:
+  supported: false
+  detail: rate-limits/bureau-of-ocean-energy-management-rate-limits.yml
+  note: >-
+    no X-RateLimit-*, RateLimit-* or Retry-After header was present on any observed response.
+    Observed response headers were Cache-Control, ETag, Vary, X-Content-Type-Options,
+    Strict-Transport-Security and a TS01* load-balancer cookie.
+caching:
+  supported: true
+  note: >-
+    ArcGIS REST responses carry ETag and `Cache-Control: max-age=0,must-revalidate` —
+    conditional GET with If-None-Match works and is the polite way to poll.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

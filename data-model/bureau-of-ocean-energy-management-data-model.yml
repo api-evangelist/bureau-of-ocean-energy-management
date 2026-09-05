@@ -1,0 +1,344 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  derived from the live ArcGIS REST service and layer documents at
+  https://gis.boem.gov/server/rest/services (probed 2026-09-05) and the eleven OGC
+  GetCapabilities documents saved verbatim in openapi/
+note: |
+  There is no $ref graph to walk here — BOEM's contract is OGC/Esri, not OpenAPI, so the entity
+  model is the LAYER SET, and the relationships are spatial and cadastral rather than
+  foreign-key. What follows is the real, enumerated layer inventory of the six public map
+  services, plus the shared entities that recur across regions.
+
+  The organising fact: BOEM publishes ONE conceptual model replicated across five OCS regions
+  (Alaska, Atlantic, Gulf of America, Pacific, and the Marine Minerals composite). Seven
+  entities appear in every region — wells, platforms, pipelines, the OCSLA 8(g) limit, the
+  Submerged Lands Act boundary, protraction diagrams, lease blocks, leases and planning areas.
+  A consumer that models one region models them all; only the region prefix changes.
+
+  Layer ids are NOT contiguous and are NOT portable across services. 'BOEM Oil and Gas Leases'
+  is id 6 in AK_Layers, id 7 in GOA_Layers and POC_Layers, and id 15 in MMC_Layers — and does
+  not exist at all in ATL_Layers. Address layers by name resolved from the MapServer document,
+  never by a hard-coded id.
+identifiers:
+  primary_key: OBJECTID (esriFieldTypeOID) on every feature layer
+  geometry_field: SHAPE
+  note: >-
+    OBJECTID is an Esri row id, stable only within one layer of one service. It is not a BOEM
+    business identifier. The real cadastral keys are BLOCK_NUMBER, protraction and lease
+    identifiers carried as string attributes.
+  example_schema:
+    layer: BOEM_BSEE/ATL_Layers/MapServer/0 (BOEM Limit of OCSLA 8(g) zone)
+    fields:
+      - OBJECTID: OID
+      - BDRY_APRV_DATE: String
+      - BLOCK_NUMBER: String
+      - BDRY_NAME_TEXT: String
+      - SHAPE: Geometry
+      - SHAPE.LEN: Double
+services:
+  - service: BOEM_BSEE/AK_Layers
+    role: Alaska OCS region
+    rest: https://gis.boem.gov/server/rest/services/BOEM_BSEE/AK_Layers/MapServer
+    wms: https://gis.boem.gov/server/services/BOEM_BSEE/AK_Layers/MapServer/WMSServer
+    wfs: https://gis.boem.gov/server/services/BOEM_BSEE/AK_Layers/MapServer/WFSServer
+    layer_count: 9
+    layers:
+      - id: 0
+        name: "OCS Drilling Platforms"
+        geometry: Point
+      - id: 1
+        name: "OCS Oil and Natural Gas Wells"
+        geometry: Point
+      - id: 2
+        name: "BOEM Limit of OCSLA 8(g) zone"
+        geometry: Polyline
+      - id: 3
+        name: "Submerged Lands Act Boundary"
+        geometry: Polyline
+      - id: 4
+        name: "BOEM OCS Protraction Diagrams & Leasing Maps"
+        geometry: Polygon
+      - id: 5
+        name: "BOEM OCS Lease Blocks"
+        geometry: Polygon
+      - id: 6
+        name: "BOEM Oil and Gas Leases"
+        geometry: Polygon
+      - id: 7
+        name: "BOEM Oil and Gas Planning Areas"
+        geometry: Polygon
+      - id: 8
+        name: "BOEM Oil and Gas Lease Points"
+        geometry: Point
+  - service: BOEM_BSEE/ATL_Layers
+    role: Atlantic OCS region
+    rest: https://gis.boem.gov/server/rest/services/BOEM_BSEE/ATL_Layers/MapServer
+    wms: https://gis.boem.gov/server/services/BOEM_BSEE/ATL_Layers/MapServer/WMSServer
+    wfs: https://gis.boem.gov/server/services/BOEM_BSEE/ATL_Layers/MapServer/WFSServer
+    layer_count: 7
+    layers:
+      - id: 0
+        name: "BOEM Limit of OCSLA 8(g) zone"
+        geometry: Polyline
+      - id: 1
+        name: "OCS Oil and Natural Gas Wells"
+        geometry: Point
+      - id: 2
+        name: "Submerged Lands Act Boundary"
+        geometry: Polyline
+      - id: 3
+        name: "BOEM OCS Protraction Diagrams & Leasing Maps"
+        geometry: Polygon
+      - id: 4
+        name: "BOEM OCS Lease Blocks"
+        geometry: Polygon
+      - id: 5
+        name: "BOEM Oil and Gas Planning Areas"
+        geometry: Polygon
+      - id: 6
+        name: "BOEM Oil and Gas Lease Points"
+        geometry: Point
+  - service: BOEM_BSEE/GOA_Layers
+    role: Gulf of America OCS region
+    rest: https://gis.boem.gov/server/rest/services/BOEM_BSEE/GOA_Layers/MapServer
+    wms: https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer
+    wfs: https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer
+    layer_count: 11
+    layers:
+      - id: 0
+        name: "OCS Drilling Platforms"
+        geometry: Point
+      - id: 1
+        name: "OCS Oil and Natural Gas Wells"
+        geometry: Point
+      - id: 2
+        name: "OCS Oil & Gas Pipelines"
+        geometry: Polyline
+      - id: 3
+        name: "BOEM Limit of OCSLA 8(g) zone"
+        geometry: Polyline
+      - id: 4
+        name: "Submerged Lands Act Boundary"
+        geometry: Polyline
+      - id: 5
+        name: "BOEM OCS Protraction Diagrams & Leasing Maps"
+        geometry: Polygon
+      - id: 6
+        name: "BOEM OCS Lease Blocks"
+        geometry: Polygon
+      - id: 7
+        name: "BOEM Oil and Gas Leases"
+        geometry: Polygon
+      - id: 8
+        name: "BOEM Oil and Gas Planning Areas"
+        geometry: Polygon
+      - id: 9
+        name: "Seismic Anomalies"
+        geometry: Polygon
+      - id: 11
+        name: "BOEM Oil and Gas Lease Points"
+        geometry: Point
+  - service: BOEM_BSEE/MMC_Layers
+    role: Marine Minerals / multipurpose composite
+    rest: https://gis.boem.gov/server/rest/services/BOEM_BSEE/MMC_Layers/MapServer
+    wms: https://gis.boem.gov/server/services/BOEM_BSEE/MMC_Layers/MapServer/WMSServer
+    wfs: https://gis.boem.gov/server/services/BOEM_BSEE/MMC_Layers/MapServer/WFSServer
+    layer_count: 18
+    layers:
+      - id: 0
+        name: "OCS Drilling Platforms"
+        geometry: Point
+      - id: 1
+        name: "OCS Oil and Natural Gas Wells"
+        geometry: Point
+      - id: 2
+        name: "OCS Oil & Gas Pipelines"
+        geometry: Polyline
+      - id: 4
+        name: "Unofficial State Lateral Boundaries"
+        geometry: Polyline
+      - id: 5
+        name: "BOEM OCS Administrative Boundaries"
+        geometry: Polyline
+      - id: 7
+        name: "BOEM Limit of OCSLA 8(g) zone"
+        geometry: Polyline
+      - id: 8
+        name: "Submerged Lands Act Boundary"
+        geometry: Polyline
+      - id: 10
+        name: "BOEM OCS Protraction Diagrams & Leasing Maps"
+        geometry: Polygon
+      - id: 11
+        name: "BOEM OCS Lease Blocks"
+        geometry: Polygon
+      - id: 12
+        name: "BOEM Block Aliquots"
+        geometry: Polygon
+      - id: 15
+        name: "BOEM Oil and Gas Leases"
+        geometry: Polygon
+      - id: 19
+        name: "Proposed Final OCS Oil and Gas Leasing Program 2012-2017"
+        geometry: Polygon
+      - id: 20
+        name: "BOEM Oil and Gas Planning Areas"
+        geometry: Polygon
+      - id: 21
+        name: "Outer Continental Shelf Lands Act"
+        geometry: Polygon
+      - id: 22
+        name: "2010 Vessel Traffic (AIS)"
+        geometry: Polygon
+      - id: 23
+        name: "2009 Vessel Traffic (AIS)"
+        geometry: Polygon
+      - id: 29
+        name: "OCS Proposed Final Program Areas 2017-2022"
+        geometry: Polygon
+      - id: 31
+        name: "Atlantic Fishing Revenue Intensity, 2007-2012"
+        geometry: Polygon
+  - service: BOEM_BSEE/POC_Layers
+    role: Pacific OCS region
+    rest: https://gis.boem.gov/server/rest/services/BOEM_BSEE/POC_Layers/MapServer
+    wms: https://gis.boem.gov/server/services/BOEM_BSEE/POC_Layers/MapServer/WMSServer
+    wfs: https://gis.boem.gov/server/services/BOEM_BSEE/POC_Layers/MapServer/WFSServer
+    layer_count: 10
+    layers:
+      - id: 0
+        name: "OCS Drilling Platforms"
+        geometry: Point
+      - id: 1
+        name: "OCS Oil and Natural Gas Wells"
+        geometry: Point
+      - id: 2
+        name: "OCS Oil & Gas Pipelines"
+        geometry: Polyline
+      - id: 3
+        name: "BOEM Limit of OCSLA 8(g) zone"
+        geometry: Polyline
+      - id: 4
+        name: "Submerged Lands Act Boundary"
+        geometry: Polyline
+      - id: 5
+        name: "BOEM OCS Protraction Diagrams & Leasing Maps"
+        geometry: Polygon
+      - id: 6
+        name: "BOEM OCS Lease Blocks"
+        geometry: Polygon
+      - id: 7
+        name: "BOEM Oil and Gas Leases"
+        geometry: Polygon
+      - id: 8
+        name: "BOEM Oil and Gas Planning Areas"
+        geometry: Polygon
+      - id: 9
+        name: "BOEM Oil and Gas Lease Points"
+        geometry: Point
+  - service: AtlanticFishGuide/Atlantic_Coast_Fishing_Atlas
+    role: Atlantic Coast Fishing Atlas
+    rest: https://gis.boem.gov/server/rest/services/AtlanticFishGuide/Atlantic_Coast_Fishing_Atlas/MapServer
+    wms: https://gis.boem.gov/server/services/AtlanticFishGuide/Atlantic_Coast_Fishing_Atlas/MapServer/WMSServer
+    wfs: https://gis.boem.gov/server/services/AtlanticFishGuide/Atlantic_Coast_Fishing_Atlas/MapServer/WFSServer
+    layer_count: 5
+    layers:
+      - id: 0
+        name: "Fishing and Caution Points"
+        geometry: Point
+      - id: 1
+        name: "Fishing and Caution Lines"
+        geometry: Polyline
+      - id: 2
+        name: "Fishing and Caution Areas"
+        geometry: Polygon
+      - id: 3
+        name: "Map Index"
+        geometry: Polygon
+      - id: 4
+        name: "US Atlantic Coast Fishing Atlas"
+        geometry: none
+entities:
+  - name: OCS Oil and Natural Gas Wells
+    geometry: Point
+    appears_in: [AK_Layers, ATL_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: OCS Drilling Platforms
+    geometry: Point
+    appears_in: [AK_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: OCS Oil & Gas Pipelines
+    geometry: Polyline
+    appears_in: [GOA_Layers, MMC_Layers, POC_Layers]
+  - name: BOEM Limit of OCSLA 8(g) zone
+    geometry: Polyline
+    appears_in: [AK_Layers, ATL_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: Submerged Lands Act Boundary
+    geometry: Polyline
+    appears_in: [AK_Layers, ATL_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: BOEM OCS Protraction Diagrams & Leasing Maps
+    geometry: Polygon
+    appears_in: [AK_Layers, ATL_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: BOEM OCS Lease Blocks
+    geometry: Polygon
+    appears_in: [AK_Layers, ATL_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: BOEM Oil and Gas Leases
+    geometry: Polygon
+    appears_in: [AK_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+  - name: BOEM Oil and Gas Planning Areas
+    geometry: Polygon
+    appears_in: [AK_Layers, ATL_Layers, GOA_Layers, MMC_Layers, POC_Layers]
+relationships:
+  - from: BOEM OCS Lease Blocks
+    to: BOEM OCS Protraction Diagrams & Leasing Maps
+    kind: belongs_to
+    via: BLOCK_NUMBER within a protraction diagram
+    confidence: high
+    evidence: >-
+      the cadastral hierarchy BOEM publishes — a protraction diagram is subdivided into lease
+      blocks, and BLOCK_NUMBER is carried as a string attribute on the boundary layers
+  - from: BOEM Oil and Gas Leases
+    to: BOEM OCS Lease Blocks
+    kind: belongs_to
+    via: leased blocks
+    confidence: high
+  - from: BOEM Block Aliquots
+    to: BOEM OCS Lease Blocks
+    kind: belongs_to
+    via: aliquot subdivision of a block
+    confidence: high
+    evidence: MMC_Layers publishes Block Aliquots (id 12) alongside Lease Blocks (id 11)
+  - from: OCS Oil and Natural Gas Wells
+    to: BOEM Oil and Gas Leases
+    kind: belongs_to
+    via: spatial containment (a well sits inside a leased block)
+    confidence: medium
+    note: >-
+      the join is spatial, not a declared key. Use an ArcGIS query with geometry/geometryType
+      or a WFS bbox filter; no attribute foreign key is exposed.
+  - from: OCS Drilling Platforms
+    to: OCS Oil & Gas Pipelines
+    kind: has_many
+    via: spatial connectivity
+    confidence: low
+    note: >-
+      no topology or attribute link is published. Recorded as low confidence deliberately —
+      this relationship is inferred from the domain, not from the contract.
+catalogs:
+  - name: MarineCadastre.gov
+    url: https://hub.marinecadastre.gov/data.json
+    standard: DCAT-US 1.1 / Project Open Data
+    datasets: 275
+    note: >-
+      a JOINT BOEM / NOAA program. Of the 275 datasets, 224 are published by "NOAA GeoPlatform"
+      and 20 by BOEM entities ("Bureau of Ocean Energy Management (BOEM)", "Bureau of Ocean
+      Energy Management ArcGIS Online (AGOL)", "BOEM Marine Minerals Program"). Recorded so a
+      later round does not credit BOEM with the whole catalog.
+    distributions: [ArcGIS GeoService, CSV, Shapefile, GeoJSON, KML, File Geodatabase, GeoPackage, OGC WMS]
+  - name: ESPIS / Environmental Studies Program Hub
+    url: https://esp-boem.hub.arcgis.com/data.json
+    standard: DCAT-US 1.1 / Project Open Data
+    datasets: 11
+    note: all 11 published by "Bureau of Ocean Energy Management ArcGIS Online (AGOL)"
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,141 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  live probes 2026-09-05 of https://gis.boem.gov/server/rest/services (ArcGIS Server 11.3),
+  eleven OGC GetCapabilities documents harvested verbatim to openapi/, the DCAT-US 1.1
+  catalogs at https://hub.marinecadastre.gov/data.json and
+  https://esp-boem.hub.arcgis.com/data.json, and the well-known probe in
+  well-known/bureau-of-ocean-energy-management-well-known.yml
+note: |
+  BOEM makes no standards-conformance claim in prose anywhere on boem.gov, and publishes no
+  certification programme (no trust centre, no SOC 2 / ISO 27001 / FedRAMP statement was found
+  — see security/). Everything below is derived from what the services actually EMIT, not from
+  a marketing claim. No Compliance pointer is wired for this provider because no compliance
+  programme is published.
+
+  The DOMAIN STANDARD here is OGC: BOEM's contract is not OpenAPI-shaped and never was. The
+  ArcGIS Server at gis.boem.gov exposes every regional map service through OGC WMS 1.3.0 and
+  WFS 2.0.0 endpoints under /server/services/, and each GetCapabilities document IS the
+  contract. Eleven were fetched and saved verbatim. A twelfth — POC_Layers WFS — returned
+  HTTP 400 to a plain GetCapabilities and is recorded as a defect below rather than omitted.
+
+  A path trap worth recording: the ArcGIS REST directory answers on BOTH /arcgis/rest/services
+  and /server/rest/services, but the OGC endpoints answer ONLY under /server/services/.
+  /arcgis/services/... 404s, and /arcgis/rest/services/<svc>/MapServer/WMSServer returns the
+  HTML services-directory page with HTTP 200 — a soft-200 that looks like a hit and is not one.
+standards:
+  - id: ogc-wms-1.3.0
+    conforms: true
+    evidence: >-
+      WMS_Capabilities version="1.3.0" xmlns="http://www.opengis.net/wms" served at
+      https://gis.boem.gov/server/services/BOEM_BSEE/ATL_Layers/MapServer/WMSServer?service=WMS&request=GetCapabilities
+      (HTTP 200, text/xml). Six services confirmed; saved verbatim as
+      openapi/bureau-of-ocean-energy-management-*-wms-capabilities.xml
+  - id: ogc-wfs-2.0.0
+    conforms: true
+    evidence: >-
+      wfs:WFS_Capabilities version="2.0.0" xmlns="http://www.opengis.net/wfs/2.0" served at
+      https://gis.boem.gov/server/services/BOEM_BSEE/ATL_Layers/MapServer/WFSServer?service=WFS&request=GetCapabilities
+      (HTTP 200). Five services confirmed; saved verbatim as
+      openapi/bureau-of-ocean-energy-management-*-wfs-capabilities.xml
+  - id: ogc-filter-encoding-2.0
+    conforms: true
+    evidence: >-
+      WFS capabilities declare xmlns:fes="http://www.opengis.net/fes/2.0" and advertise the
+      Filter_Capabilities section
+  - id: ogc-ows-common-1.1
+    conforms: true
+    evidence: WFS capabilities declare xmlns:ows="http://www.opengis.net/ows/1.1"
+  - id: ogc-gml-3.2
+    conforms: true
+    evidence: >-
+      WFS GetFeature output formats include application/gml+xml; version=3.2 and
+      text/xml; subtype=gml/3.2 (also GML2 and GML 3.1.1 for legacy clients)
+  - id: ogc-sld-1.1
+    conforms: true
+    evidence: WMS capabilities advertise application/vnd.ogc.sld+xml for user-supplied styling
+  - id: ogc-service-exception-report
+    conforms: true
+    evidence: >-
+      probed 2026-09-05 — an unrecognised WMS request returns a ServiceExceptionReport
+      version="1.1.1" XML body with a ServiceException code, per the OGC exception DTD
+  - id: ogc-api-features
+    conforms: false
+    evidence: >-
+      no modern OGC API surface exists. GET /conformance and /collections were not found on
+      any BOEM host; the estate is classic OWS (WMS/WFS) only. Recorded as a genuine absence,
+      not an unprobed gap.
+  - id: geojson-rfc7946
+    conforms: true
+    evidence: >-
+      WMS GetFeatureInfo advertises application/geo+json; the ArcGIS REST query surface
+      advertises supportedQueryFormats "JSON, geoJSON, PBF" on every feature layer
+  - id: esri-arcgis-rest
+    conforms: true
+    evidence: >-
+      ArcGIS Server REST services directory at https://gis.boem.gov/server/rest/services?f=json
+      (HTTP 200, application/json) reports currentVersion 11.3 and three folders —
+      AtlanticFishGuide, BOEM_BSEE, Utilities
+  - id: esri-feature-service
+    conforms: true
+    evidence: >-
+      every MapServer publishes a paired FeatureServer; layers report maxRecordCount 10000 and
+      advancedQueryCapabilities.supportsPagination true
+  - id: dcat-us-1.1
+    conforms: true
+    evidence: >-
+      https://hub.marinecadastre.gov/data.json (HTTP 200, application/json, 1.85 MB) is a
+      dcat:Catalog with conformsTo https://project-open-data.cio.gov/v1.1/schema carrying 275
+      datasets; https://esp-boem.hub.arcgis.com/data.json is the same shape with 11 datasets
+  - id: project-open-data-1.1
+    conforms: true
+    evidence: >-
+      both catalogs declare @context https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld
+      and describedBy the Project Open Data catalog schema — the US federal open-data standard
+      required by the OPEN Government Data Act
+  - id: json-ld
+    conforms: true
+    evidence: the DCAT-US catalogs are served with a JSON-LD @context
+  - id: rfc9116-security-txt
+    conforms: partial
+    evidence: >-
+      https://www.boem.gov/.well-known/security.txt is served (HTTP 200, text/plain) with
+      Contact, Policy, Canonical, Preferred-Languages and Hiring fields — but Expires is
+      2025-12-01T08:00:00.000Z, which had already lapsed at probe time
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      no authorization server exists. /.well-known/oauth-authorization-server and
+      /.well-known/openid-configuration returned 404 on every BOEM host; all public surfaces
+      are anonymous
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      errors are the Esri {"error":{"code","message","details"}} envelope and the OGC
+      ServiceExceptionReport, not application/problem+json — see
+      errors/bureau-of-ocean-energy-management-problem-types.yml
+domain_standard:
+  market: geospatial / marine and offshore-energy data
+  standard: OGC Web Services (WMS 1.3.0, WFS 2.0.0) plus DCAT-US 1.1 for catalog publication
+  declared_in_contract: true
+  evidence: >-
+    the contract declares the standard about itself: WMS_Capabilities carries
+    xmlns="http://www.opengis.net/wms" version="1.3.0"; wfs:WFS_Capabilities carries
+    xmlns:wfs="http://www.opengis.net/wfs/2.0" version="2.0.0"; the catalog declares
+    conformsTo "https://project-open-data.cio.gov/v1.1/schema". A GIS consumer that already
+    speaks WMS/WFS can add a BOEM layer with no bespoke connector.
+defects:
+  - id: poc-layers-wfs-400
+    surface: https://gis.boem.gov/server/services/BOEM_BSEE/POC_Layers/MapServer/WFSServer?service=WFS&request=GetCapabilities
+    observed: HTTP 400 on 2026-09-05
+    note: >-
+      the Pacific OCS region map service advertises WFSServer in its supportedExtensions and its
+      WMS sibling answers normally, so the WFS endpoint appears broken rather than absent. Every
+      other regional service returned a valid WFS 2.0.0 capabilities document.
+  - id: security-txt-expired
+    surface: https://www.boem.gov/.well-known/security.txt
+    observed: 'Expires: 2025-12-01T08:00:00.000Z (lapsed 9 months before probe)'
+    note: RFC 9116 says a client SHOULD NOT use an expired security.txt. Reissue with a future date.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

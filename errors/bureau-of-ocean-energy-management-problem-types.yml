@@ -1,0 +1,72 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  live error probes 2026-09-05 against https://gis.boem.gov/server/rest/services and
+  https://gis.boem.gov/server/services, plus the exception declarations inside the harvested
+  GetCapabilities documents in openapi/
+note: |
+  BOEM publishes no error reference of its own. The two envelopes below were observed live and
+  are the envelopes of the underlying products — the Esri ArcGIS REST error object and the OGC
+  ServiceExceptionReport. Neither is RFC 9457 problem+json, and no application/problem+json
+  response exists anywhere on the estate.
+
+  The single most important thing for an agent to know here: THE ARCGIS SURFACE RETURNS ITS
+  ERROR CODE IN THE BODY, NOT THE HTTP STATUS. A request for a layer that does not exist and a
+  malformed query both come back HTTP 200 with an error object carrying code 500 / 400. Reading
+  the status line alone will silently treat a failure as a success.
+format: vendor
+formats:
+  - surface: ArcGIS REST
+    media_type: application/json
+    shape: '{"error": {"code": <int>, "message": <string>, "details": [<string>...]}}'
+    http_status_reliable: false
+  - surface: OGC WMS / WFS
+    media_type: text/xml
+    shape: <ServiceExceptionReport><ServiceException code="..."> ... </ServiceException></ServiceExceptionReport>
+    http_status_reliable: false
+problem_types:
+  - id: arcgis-400-query-failed
+    surface: ArcGIS REST
+    code: 400
+    title: Failed to execute query.
+    observed: >-
+      GET /BOEM_BSEE/ATL_Layers/MapServer/0/query?where=BOGUSFIELD=1&f=json returned HTTP 200
+      with {"error":{"code":400,"message":"Failed to execute query.","details":[]}}
+    remediation: >-
+      the `where` clause is a SQL expression evaluated against the layer's own fields. Read the
+      field list from /MapServer/<layerId>?f=json before composing a filter.
+  - id: arcgis-500-json
+    surface: ArcGIS REST
+    code: 500
+    title: json
+    observed: >-
+      GET /BOEM_BSEE/ATL_Layers/MapServer/99?f=json (a layer id that does not exist) returned
+      HTTP 200 with {"error":{"code":500,"message":"json","details":[]}}
+    remediation: >-
+      enumerate layer ids from the MapServer document rather than guessing; the message on this
+      path is unhelpfully terse and does not say the layer is missing.
+  - id: ogc-request-not-allowed
+    surface: OGC WMS
+    code: RequestNotAllowed
+    title: The request not allowed.
+    observed: >-
+      GET /server/services/BOEM_BSEE/ATL_Layers/MapServer/WMSServer?service=WMS&request=BogusRequest
+      returned a ServiceExceptionReport version="1.1.1" with ServiceException code
+      "RequestNotAllowed"
+    remediation: >-
+      use only the operations the service's own GetCapabilities advertises — GetCapabilities,
+      GetMap, GetFeatureInfo, GetStyles, GetLegendGraphic on WMS.
+  - id: ogc-wfs-400-poc-layers
+    surface: OGC WFS
+    code: 400
+    title: WFS GetCapabilities rejected on POC_Layers
+    observed: >-
+      GET /server/services/BOEM_BSEE/POC_Layers/MapServer/WFSServer?service=WFS&request=GetCapabilities
+      returned HTTP 400 with no body on 2026-09-05, while the same request against AK, ATL, GOA
+      and MMC returned valid WFS 2.0.0 capabilities
+    remediation: >-
+      a provider-side defect, not a client error. Use the POC_Layers WMS endpoint or the ArcGIS
+      REST FeatureServer for Pacific OCS data until it is fixed.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

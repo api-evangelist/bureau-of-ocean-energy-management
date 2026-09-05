@@ -46,8 +46,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bureau-of-ocean-energy-management.png
 access: 3rd-Party
 created: '2024-11-30'
-modified: '2026-04-23'
-position: Consuming
+modified: '2026-09-05'
+position: Producing
 description: >-
   The Bureau of Ocean Energy Management (BOEM) manages the nation's offshore
   resources in an environmentally and economically responsible way. BOEM
@@ -74,6 +74,8 @@ apis:
         type: Portal
       - url: https://marinecadastre.gov/oceanreports
         type: Tools
+      - url: https://hub.marinecadastre.gov/data.json
+        type: DataAPI
     description: >-
       MarineCadastre.gov is the authoritative source for marine cadastre data
       and services. It provides an interactive map viewer with integrated
@@ -111,6 +113,36 @@ apis:
         type: Documentation
       - url: https://catalog.data.gov/dataset?organization=boem-gov
         type: DataAPI
+      - url: https://gis.boem.gov/server/rest/services?f=json
+        type: APIReference
+      - url: openapi/bureau-of-ocean-energy-management-atlantic-fish-guide-atlantic_coast_fishing_atlas-wfs-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-atlantic-fish-guide-atlantic_coast_fishing_atlas-wms-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-ak_layers-wfs-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-ak_layers-wms-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-atl_layers-wfs-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-atl_layers-wms-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-goa_layers-wfs-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-goa_layers-wms-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-mmc_layers-wfs-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-mmc_layers-wms-capabilities.xml
+        type: GetCapabilities
+      - url: openapi/bureau-of-ocean-energy-management-boem-bsee-poc_layers-wms-capabilities.xml
+        type: GetCapabilities
+      - url: >-
+          https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?service=WMS&request=GetCapabilities
+        type: WMS
+      - url: >-
+          https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WFSServer?service=WFS&request=GetCapabilities
+        type: WFS
     description: >-
       BOEM provides ArcGIS REST Services exposing geospatial data for the Outer
       Continental Shelf (OCS) regions. Data includes active leases, offshore
@@ -139,9 +171,12 @@ apis:
       - Environmental
       - Marine
     humanURL: https://esp-boem.hub.arcgis.com/
+    baseURL: https://esp-boem.hub.arcgis.com/
     properties:
       - url: https://esp-boem.hub.arcgis.com/
         type: Portal
+      - url: https://esp-boem.hub.arcgis.com/data.json
+        type: DataAPI
     description: >-
       ESPIS provides access to BOEM's environmental studies data, including
       research reports, environmental impact studies, and scientific literature
@@ -169,14 +204,53 @@ common:
   - type: Portal
     url: https://marinecadastre.gov/
   - type: PrivacyPolicy
-    url: https://www.boem.gov/privacy-policy
+    url: https://www.doi.gov/privacy
   - type: Mapping and Data
     url: https://www.boem.gov/oil-gas-energy/mapping-and-data
   - type: Data Portal
     url: https://catalog.data.gov/dataset?organization=boem-gov
   - url: https://www.boem.gov/rss.xml
     type: Blog
+  - type: Documentation
+    url: https://www.boem.gov/oil-gas-energy/mapping-and-data
+  - type: Documentation
+    url: https://www.boem.gov/renewable-energy/mapping-and-data
+  - type: Support
+    url: https://www.boem.gov/about-boem/contact-us
+  - type: TermsOfService
+    url: https://www.boem.gov/about-boem/disclaimer-liability-and-endorsement
+  - type: Security
+    url: security/bureau-of-ocean-energy-management-vulnerability-disclosure.yml
+  - type: SecurityTxt
+    url: well-known/bureau-of-ocean-energy-management-security.txt
+  - type: WellKnown
+    url: well-known/bureau-of-ocean-energy-management-well-known.yml
+  - type: Conformance
+    url: conformance/bureau-of-ocean-energy-management-conformance.yml
+  - type: Authentication
+    url: authentication/bureau-of-ocean-energy-management-authentication.yml
+  - type: Conventions
+    url: conventions/bureau-of-ocean-energy-management-conventions.yml
+  - type: DataModel
+    url: data-model/bureau-of-ocean-energy-management-data-model.yml
+  - type: ErrorCatalog
+    url: errors/bureau-of-ocean-energy-management-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/bureau-of-ocean-energy-management-lifecycle.yml
+  - type: LLMsTxt
+    url: llms/bureau-of-ocean-energy-management-llms.txt
+  - type: MCPServer
+    url: mcp/bureau-of-ocean-energy-management-mcp.yml
+  - type: Plans
+    url: plans/bureau-of-ocean-energy-management-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bureau-of-ocean-energy-management-rate-limits.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v3

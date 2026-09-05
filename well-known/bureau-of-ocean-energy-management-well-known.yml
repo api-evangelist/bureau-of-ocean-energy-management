@@ -1,0 +1,380 @@
+generated: '2026-09-05'
+method: probed
+source: live probes 2026-09-05 of every host this record knows — the registrable domain
+  boem.gov and www.boem.gov, the gis.boem.gov ArcGIS Server host that serves the OGC
+  WMS/WFS contracts, the two MarineCadastre hosts and the esp-boem ArcGIS Hub host.
+note: |
+  ONE real document exists on the whole BOEM estate: an RFC 9116 security.txt served from
+  www.boem.gov (and boem.gov, which redirects to it). It is SERVED BUT EXPIRED — the file
+  carries `Expires: 2025-12-01T08:00:00.000Z`, which fell due nine months before this probe.
+  RFC 9116 says a client SHOULD NOT use an expired file; BOEM should reissue it.
+
+  CAUTION on marinecadastre.gov: that host is an Esri ArcGIS Hub single-page app and answers
+  HTTP 200 with the SAME 61,654-byte HTML shell for EVERY unknown path. Its `.well-known`,
+  /apis.json, agent-card and llms.txt "200"s are NOT documents — they are the SPA catch-all.
+  Every one is recorded below as status 200 with real: false so a later round cannot mistake
+  them for hits. hub.marinecadastre.gov, by contrast, returns honest 404s.
+
+  No OpenID/OAuth discovery, no api-catalog, no ai-plugin, no apis.json, no AAuth resource
+  document and no A2A agent card exists anywhere on the estate. All public BOEM data surfaces
+  are anonymous, so there is no authorization server to describe.
+hosts:
+  - host: www.boem.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: true
+        content_type: text/plain
+        file: bureau-of-ocean-energy-management-security.txt
+        standard: RFC 9116 security.txt
+        note: served but EXPIRED (Expires 2025-12-01T08:00:00.000Z); Policy points at the
+          Department of the Interior vulnerability disclosure policy.
+      - path: /.well-known/openid-configuration
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/api-catalog
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/apis.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /apis.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /apis.yml
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/agent-card.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/agent.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/aauth-resource.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/ucp.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+
+  - host: boem.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: true
+        content_type: text/plain
+        file: bureau-of-ocean-energy-management-security.txt
+        standard: RFC 9116 security.txt
+        note: served but EXPIRED (Expires 2025-12-01T08:00:00.000Z); Policy points at the
+          Department of the Interior vulnerability disclosure policy.
+      - path: /.well-known/openid-configuration
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/api-catalog
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/apis.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /apis.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /apis.yml
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/agent-card.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/agent.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/aauth-resource.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+      - path: /.well-known/ucp.json
+        status: 404
+        real: false
+        content_type: text/html; charset=utf-8
+
+  - host: gis.boem.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/openid-configuration
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/api-catalog
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/apis.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /apis.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /apis.yml
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/agent-card.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/agent.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/aauth-resource.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+      - path: /.well-known/ucp.json
+        status: 404
+        real: false
+        content_type: text/html;charset=utf-8
+
+  - host: marinecadastre.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/openid-configuration
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/api-catalog
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/apis.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /apis.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /apis.yml
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/agent-card.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/agent.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/aauth-resource.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+      - path: /.well-known/ucp.json
+        status: 200
+        real: false
+        content_type: text/html; charset=utf-8
+        note: HTTP 200 returning the 61654-byte ArcGIS Hub SPA shell, not a document.
+
+  - host: hub.marinecadastre.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/openid-configuration
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/api-catalog
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/apis.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /apis.json
+        status: 404
+        real: false
+        content_type: text/plain; charset=utf-8
+      - path: /apis.yml
+        status: 404
+        real: false
+        content_type: text/plain; charset=utf-8
+      - path: /.well-known/agent-card.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/agent.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/aauth-resource.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/ucp.json
+        status: 404
+        real: false
+        content_type: 
+
+  - host: esp-boem.hub.arcgis.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/openid-configuration
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/api-catalog
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/apis.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /apis.json
+        status: 404
+        real: false
+        content_type: text/plain; charset=utf-8
+      - path: /apis.yml
+        status: 404
+        real: false
+        content_type: text/plain; charset=utf-8
+      - path: /.well-known/agent-card.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/agent.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/aauth-resource.json
+        status: 404
+        real: false
+        content_type: 
+      - path: /.well-known/ucp.json
+        status: 404
+        real: false
+        content_type: 
+
+summary:
+  hosts_probed: 6
+  paths_probed_per_host: 13
+  real_documents: 1
+  soft_200_shells: 13
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

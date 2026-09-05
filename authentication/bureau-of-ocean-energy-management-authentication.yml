@@ -1,0 +1,51 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  live anonymous probes 2026-09-05 of https://gis.boem.gov/server/rest/services,
+  the OGC WMS/WFS endpoints under /server/services/, https://hub.marinecadastre.gov/data.json
+  and https://esp-boem.hub.arcgis.com/data.json
+note: |
+  BOEM's public data surfaces require NO authentication. Every probe below was made anonymously
+  with no key, no token and no cookie, and every one returned data. There is no developer
+  portal, no signup, no API key issuance and no OAuth authorization server anywhere on the
+  estate — /.well-known/openid-configuration and /.well-known/oauth-authorization-server
+  returned 404 on all six hosts probed (see well-known/).
+
+  The ArcGIS Server directory does advertise a login and a token endpoint
+  (https://gis.boem.gov/server/rest/login and https://gis.boem.gov/server/tokens/). These are
+  the stock Esri ArcGIS Server administrative surfaces, not a consumer credential path — they
+  exist to let BOEM staff publish services, and nothing in BOEM's own documentation offers a
+  reader an account. They are recorded here so a later round does not read them as a public
+  auth tier.
+schemes: []
+surfaces:
+  - name: BOEM ArcGIS REST Services
+    base: https://gis.boem.gov/server/rest/services
+    auth: none
+    evidence: >-
+      GET /server/rest/services?f=json returned HTTP 200 with the folder list, and
+      /BOEM_BSEE/ATL_Layers/MapServer/0/query?where=1=1&returnCountOnly=true&f=json returned
+      {"count":975} — both anonymous
+  - name: BOEM OGC WMS / WFS
+    base: https://gis.boem.gov/server/services
+    auth: none
+    evidence: >-
+      eleven GetCapabilities documents fetched anonymously at HTTP 200; saved verbatim to openapi/
+  - name: MarineCadastre.gov DCAT catalog
+    base: https://hub.marinecadastre.gov
+    auth: none
+    evidence: GET /data.json returned HTTP 200, 275 datasets, anonymous
+  - name: ESPIS ArcGIS Hub
+    base: https://esp-boem.hub.arcgis.com
+    auth: none
+    evidence: GET /data.json returned HTTP 200, 11 datasets, anonymous
+administrative_surfaces:
+  - url: https://gis.boem.gov/server/rest/login
+    kind: ArcGIS Server administrative sign-in
+    public: false
+  - url: https://gis.boem.gov/server/tokens/
+    kind: ArcGIS Server token service
+    public: false
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

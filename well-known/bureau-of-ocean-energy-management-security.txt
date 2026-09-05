@@ -1,0 +1,6 @@
+Contact: mailto:BOEMPublicAffairs@boem.gov
+Expires: 2025-12-01T08:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.boem.gov/.well-known/security.txt
+Policy: https://www.doi.gov/vulnerability-disclosure-policy
+Hiring: https://www.boem.gov/about-boem/employment

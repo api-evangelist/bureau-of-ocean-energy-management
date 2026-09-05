@@ -1,0 +1,90 @@
+generated: '2026-09-05'
+method: derived
+status: candidate
+source: >-
+  derived from the harvested OGC GetCapabilities documents in openapi/ and the live ArcGIS REST
+  service and layer documents at https://gis.boem.gov/server/rest/services (probed 2026-09-05).
+  A search of boem.gov, marinecadastre.gov, npm, PyPI and GitHub on 2026-09-05 found no BOEM
+  MCP server of any kind.
+note: |
+  BOEM SHIPS NO MCP SERVER. Nothing below is deployed, nothing below has a URL, and no endpoint
+  should be inferred from it. This is a CANDIDATE tool surface derived from operations that
+  genuinely exist on BOEM's public OGC and ArcGIS REST contracts — it describes what an MCP
+  server for this provider WOULD expose if someone built one, and it exists so the gap is
+  legible rather than invisible.
+
+  BOEM's read-only geospatial estate is an unusually good MCP fit: no auth, no keys, no writes,
+  a small stable operation set, and a question shape ("which OCS lease blocks intersect this
+  polygon?") that an agent asks in words and an OGC service answers in features. The blocker is
+  that the operations are OWS and Esri REST, not OpenAPI, so no generic OpenAPI-to-MCP bridge
+  picks this provider up.
+deployment:
+  mode: none
+  auth: none
+  verified: derived
+  note: >-
+    no hosted endpoint and no installable package exists. mode is `none` because we derived a
+    candidate, not because a server is hard to reach. Never populate endpoint or install here
+    from a guess.
+tools:
+  - name: list_boem_services
+    description: List the BOEM ArcGIS map and feature services and the layers each publishes.
+    backing: GET /server/rest/services/{folder}?f=json
+    surface: arcgis-rest
+    confidence: high
+  - name: describe_layer
+    description: >-
+      Return the field schema, geometry type, extent and query capabilities of one BOEM layer.
+    backing: GET /server/rest/services/{service}/MapServer/{layerId}?f=json
+    surface: arcgis-rest
+    confidence: high
+  - name: query_features
+    description: >-
+      Query a BOEM layer with a SQL where clause and/or a spatial filter; returns GeoJSON.
+    backing: GET /server/rest/services/{service}/MapServer/{layerId}/query
+    surface: arcgis-rest
+    parameters: [where, geometry, geometryType, inSR, outSR, outFields, returnGeometry, resultOffset, resultRecordCount, f]
+    confidence: high
+  - name: count_features
+    description: Count features matching a filter without transferring geometry.
+    backing: GET /server/rest/services/{service}/MapServer/{layerId}/query?returnCountOnly=true
+    surface: arcgis-rest
+    confidence: high
+  - name: get_capabilities
+    description: Fetch the OGC WMS or WFS capabilities document for a BOEM service.
+    backing: GET /server/services/{service}/MapServer/{WMSServer|WFSServer}?request=GetCapabilities
+    surface: ogc
+    confidence: high
+  - name: get_map_image
+    description: Render a map image for a set of BOEM layers over a bounding box.
+    backing: WMS GetMap
+    surface: ogc
+    confidence: high
+  - name: get_feature_info
+    description: Identify what BOEM layers say about a single point.
+    backing: WMS GetFeatureInfo (application/geo+json advertised)
+    surface: ogc
+    confidence: high
+  - name: get_features_gml
+    description: Retrieve features as GML 3.2 from a BOEM WFS feature type.
+    backing: WFS 2.0.0 GetFeature
+    surface: ogc
+    confidence: high
+  - name: search_marine_cadastre_catalog
+    description: Search the MarineCadastre.gov DCAT-US catalog for a dataset by keyword.
+    backing: GET https://hub.marinecadastre.gov/data.json
+    surface: dcat
+    confidence: medium
+    note: >-
+      the whole catalog is one 1.85 MB document with no query parameter; a tool would have to
+      fetch and filter client-side. Also note only 20 of its 275 datasets are BOEM-published.
+gaps:
+  - >-
+    POC_Layers (Pacific OCS) has no working WFS — GetCapabilities returned HTTP 400 on
+    2026-09-05, so get_features_gml cannot serve that region.
+  - >-
+    no write, subscribe or notify operation exists anywhere, so no MCP tool for this provider
+    can ever mutate state. That is a property of the surface, not a limitation of the design.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

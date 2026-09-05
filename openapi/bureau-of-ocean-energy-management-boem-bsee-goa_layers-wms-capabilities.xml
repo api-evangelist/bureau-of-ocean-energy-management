@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WMS_Capabilities version="1.3.0"
+  xmlns="http://www.opengis.net/wms"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:esri_wms="http://www.esri.com/wms"
+  xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd http://www.esri.com/wms https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?version=1.3.0%26service=WMS%26request=GetSchemaExtension">
+  <Service>
+    <Name><![CDATA[WMS]]></Name>
+    <Title><![CDATA[BOEM_BSEE_GOA_Layers]]></Title>
+    <Abstract>WMS</Abstract>
+    <KeywordList><Keyword><![CDATA[]]></Keyword></KeywordList>
+    <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?"/>
+    <ContactInformation>
+      <ContactPersonPrimary>
+        <ContactPerson><![CDATA[]]></ContactPerson>
+        <ContactOrganization><![CDATA[]]></ContactOrganization>
+      </ContactPersonPrimary>
+      <ContactPosition><![CDATA[]]></ContactPosition>
+      <ContactAddress>
+        <AddressType><![CDATA[]]></AddressType>
+        <Address><![CDATA[]]></Address>
+        <City><![CDATA[]]></City>
+        <StateOrProvince><![CDATA[]]></StateOrProvince>
+        <PostCode><![CDATA[]]></PostCode>
+        <Country><![CDATA[]]></Country>
+      </ContactAddress>
+      <ContactVoiceTelephone><![CDATA[]]></ContactVoiceTelephone>
+      <ContactFacsimileTelephone><![CDATA[]]></ContactFacsimileTelephone>
+      <ContactElectronicMailAddress><![CDATA[]]></ContactElectronicMailAddress>
+    </ContactInformation>
+    <Fees><![CDATA[]]></Fees>
+    <AccessConstraints><![CDATA[]]></AccessConstraints>
+    <MaxWidth>2048</MaxWidth>
+    <MaxHeight>2048</MaxHeight>
+  </Service>
+  <Capability>
+    <Request>
+      <GetCapabilities>
+        <Format>application/vnd.ogc.wms_xml</Format>
+        <Format>text/xml</Format>
+        <DCPType>
+          <HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?"/></Get></HTTP>
+        </DCPType>
+      </GetCapabilities>
+      <GetMap>
+        <Format>image/bmp</Format>
+        <Format>image/jpeg</Format>
+        <Format>image/tiff</Format>
+        <Format>image/png</Format>
+        <Format>image/png8</Format>
+        <Format>image/png24</Format>
+        <Format>image/png32</Format>
+        <Format>image/gif</Format>
+        <Format>image/svg+xml</Format>
+        <DCPType>
+          <HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?"/></Get></HTTP>
+        </DCPType>
+      </GetMap>
+      <GetFeatureInfo>
+        <Format>application/vnd.esri.wms_raw_xml</Format>
+        <Format>application/vnd.esri.wms_featureinfo_xml</Format>
+        <Format>application/vnd.ogc.wms_xml</Format>
+        <Format>application/geo+json</Format>
+        <Format>text/xml</Format>
+        <Format>text/html</Format>
+        <Format>text/plain</Format>
+        <DCPType>
+          <HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?"/></Get></HTTP>
+        </DCPType>
+      </GetFeatureInfo>
+      <esri_wms:GetStyles>
+        <Format>application/vnd.ogc.sld+xml</Format>
+        <DCPType>
+          <HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?"/></Get></HTTP>
+        </DCPType>
+      </esri_wms:GetStyles>
+    </Request>
+    <Exception>
+      <Format>application/vnd.ogc.se_xml</Format>
+      <Format>application/vnd.ogc.se_inimage</Format>
+      <Format>application/vnd.ogc.se_blank</Format>
+      <Format>text/xml</Format>
+      <Format>XML</Format>
+    </Exception>
+    <Layer>
+      <Title><![CDATA[GOA_Layers]]></Title>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-180.000000</westBoundLongitude><eastBoundLongitude>180.000000</eastBoundLongitude><southBoundLatitude>0.000000</southBoundLatitude><northBoundLatitude>74.996399</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-180.000000" miny="0.000000" maxx="180.000000" maxy="74.996399"/>
+<BoundingBox CRS="EPSG:4326" minx="0.000000" miny="-180.000000" maxx="74.996399" maxy="180.000000"/>
+<BoundingBox CRS="EPSG:4269" minx="0.000000" miny="-180.000000" maxx="74.996399" maxy="180.000000"/>
+      <Layer queryable="1">
+        <Name>0</Name>
+        <Title><![CDATA[BOEM Oil and Gas Lease Points]]></Title>
+        <Abstract><![CDATA[Points representing blocks that are currently leased from the federal government by industry for the purpose of development of traditional oil or gas energy products and may or may not be actively developed or producing. Leases in state waters are not included in this layer.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-97.103220</westBoundLongitude><eastBoundLongitude>-85.409083</eastBoundLongitude><southBoundLatitude>25.969656</southBoundLatitude><northBoundLatitude>30.195361</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-97.103220" miny="25.969656" maxx="-85.409083" maxy="30.195361"/>
+<BoundingBox CRS="EPSG:4326" minx="25.969656" miny="-97.103220" maxx="30.195361" maxy="-85.409083"/>
+<BoundingBox CRS="EPSG:4269" minx="25.969656" miny="-97.103220" maxx="30.195361" maxy="-85.409083"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[BOEM Oil and Gas Lease Points]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=0" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+        <MaxScaleDenominator>17471285.111607</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="1">
+        <Name>1</Name>
+        <Title><![CDATA[Seismic Anomalies]]></Title>
+        <Abstract><![CDATA[]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-96.783114</westBoundLongitude><eastBoundLongitude>-85.500682</eastBoundLongitude><southBoundLatitude>25.778441</southBoundLatitude><northBoundLatitude>29.264637</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-96.783114" miny="25.778441" maxx="-85.500682" maxy="29.264637"/>
+<BoundingBox CRS="EPSG:4326" minx="25.778441" miny="-96.783114" maxx="29.264637" maxy="-85.500682"/>
+<BoundingBox CRS="EPSG:4269" minx="25.778441" miny="-96.783114" maxx="29.264637" maxy="-85.500682"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[Seismic Anomalies]]></Title>
+          <LegendURL width="300" height="540">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=1" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+      </Layer>
+      <Layer queryable="1">
+        <Name>2</Name>
+        <Title><![CDATA[BOEM Oil and Gas Planning Areas]]></Title>
+        <Abstract><![CDATA[Planning areas are used to support the 5-Year Oil and Gas Program consisting of a schedule of oil and gas lease sales indicating the size, timing and location of proposed leasing activity the Secretary of Interior determines will best meet national energy needs for the five year period following its approval. An area must be included in the current 5-Year Program in order to be offered for leasing. Section 18 of the OCS Lands Act prescribes the major steps involved in developing a 5-Year Program including extensive public comment steps. A 5-Year Program balances energy needs and environmental considerations in accordance with 30 Code of Federal Regulations (CFR) 256.8 to support Federal land ownership and mineral resource management.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-180.000000</westBoundLongitude><eastBoundLongitude>180.000000</eastBoundLongitude><southBoundLatitude>23.817993</southBoundLatitude><northBoundLatitude>74.996399</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-180.000000" miny="23.817993" maxx="180.000000" maxy="74.996399"/>
+<BoundingBox CRS="EPSG:4326" minx="23.817993" miny="-180.000000" maxx="74.996399" maxy="180.000000"/>
+<BoundingBox CRS="EPSG:4269" minx="23.817993" miny="-180.000000" maxx="74.996399" maxy="180.000000"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[BOEM Oil and Gas Planning Areas]]></Title>
+          <LegendURL width="156" height="72">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=2" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+      </Layer>
+      <Layer queryable="1">
+        <Name>3</Name>
+        <Title><![CDATA[BOEM Oil and Gas Leases]]></Title>
+        <Abstract><![CDATA[Blocks that are currently leased from the federal government by industry for the purpose of development of traditional oil or gas energy products and may or may not be actively developed or producing. Leases in state waters are not included in this layer.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-152.659973</westBoundLongitude><eastBoundLongitude>-85.363770</eastBoundLongitude><southBoundLatitude>25.927429</southBoundLatitude><northBoundLatitude>70.555420</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-152.659973" miny="25.927429" maxx="-85.363770" maxy="70.555420"/>
+<BoundingBox CRS="EPSG:4326" minx="25.927429" miny="-152.659973" maxx="70.555420" maxy="-85.363770"/>
+<BoundingBox CRS="EPSG:4269" minx="25.927429" miny="-152.659973" maxx="70.555420" maxy="-85.363770"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[BOEM Oil and Gas Leases]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=3" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+        <MaxScaleDenominator>17471285.111607</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="1">
+        <Name>4</Name>
+        <Title><![CDATA[BOEM OCS Lease Blocks]]></Title>
+        <Abstract><![CDATA[Outer Continental Shelf (OCS) lease blocks serve as the legal definition for BOEM offshore boundary coordinates used to define small geographic areas within an Official Protraction Diagram (OPD) for leasing and administrative purposes. OCS blocks relate back to individual Official Protraction Diagrams and are not uniquely numbered. Only the most recently published paper or pdf versions of the OPDs or LMs or SOBDs should be used for official or legal purposes. The pdf maps can be found by going to the following link and selecting the appropriate region of interest within the OPD/SOBD table.  http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Index.aspx]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-97.211487</westBoundLongitude><eastBoundLongitude>-81.137390</eastBoundLongitude><southBoundLatitude>23.823242</southBoundLatitude><northBoundLatitude>30.246399</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-97.211487" miny="23.823242" maxx="-81.137390" maxy="30.246399"/>
+<BoundingBox CRS="EPSG:4326" minx="23.823242" miny="-97.211487" maxx="30.246399" maxy="-81.137390"/>
+<BoundingBox CRS="EPSG:4269" minx="23.823242" miny="-97.211487" maxx="30.246399" maxy="-81.137390"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[BOEM OCS Lease Blocks]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=4" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+        <MaxScaleDenominator>17471285.111607</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="1">
+        <Name>5</Name>
+        <Title><![CDATA[BOEM OCS Protraction Diagrams & Leasing Maps]]></Title>
+        <Abstract><![CDATA[This data set contains a national scale spatial footprint of the outer boundaries of the Bureau of Ocean Energy Management’s (BOEM’s) Official Protraction Diagrams (OPDs) and Leasing Maps (LMs). It is updated as needed. OPDs and LMs are mapping products produced and used by the BOEM to delimit areas available for potential offshore mineral leases, determine the State/Federal offshore boundaries, and determine the limits of revenue sharing and other boundaries to be considered for leasing offshore waters. This dataset shows only the outline of the maps that are available from BOEM.Only the most recently published paper or pdf versions of the OPDs or LMs should be used for official or legal purposes. The pdf maps can be found by going to the following link and selecting the appropriate region of interest.
+http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Index.aspx
+Both OPDs and LMs are further subdivided into individual Outer Continental Shelf(OCS) blocks which are available as a separate layer. Some OCS blocks that also contain other boundary information are known as Supplemental Official Block Diagrams (SOBDs.) Further information on the historic development of  OPD's can be found in OCS Report MMS 99-0006: Boundary Development on the Outer Continental Shelf: 
+http://www.boemre.gov/itd/pubs/1999/99-0006.PDF
+Also see the metadata for each of the individual GIS data layers available for download. The Official Protraction Diagrams (OPDs) and Supplemental Official Block Diagrams (SOBDs), serve as the legal definition for BOEM offshore boundary coordinates and area descriptions.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-180.000000</westBoundLongitude><eastBoundLongitude>180.000000</eastBoundLongitude><southBoundLatitude>23.817993</southBoundLatitude><northBoundLatitude>74.996399</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-180.000000" miny="23.817993" maxx="180.000000" maxy="74.996399"/>
+<BoundingBox CRS="EPSG:4326" minx="23.817993" miny="-180.000000" maxx="74.996399" maxy="180.000000"/>
+<BoundingBox CRS="EPSG:4269" minx="23.817993" miny="-180.000000" maxx="74.996399" maxy="180.000000"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[BOEM OCS Protraction Diagrams & Leasing Maps]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=5" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+      </Layer>
+      <Layer queryable="1">
+        <Name>6</Name>
+        <Title><![CDATA[Submerged Lands Act Boundary]]></Title>
+        <Abstract><![CDATA[The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. The official version of the SLA Boundaries can only be found on the BOEM Official Protraction Diagrams (OPDs) or Supplemental Official Protraction Diagrams described below.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-171.959290</westBoundLongitude><eastBoundLongitude>-66.910767</eastBoundLongitude><southBoundLatitude>24.395386</southBoundLatitude><northBoundLatitude>71.439209</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-171.959290" miny="24.395386" maxx="-66.910767" maxy="71.439209"/>
+<BoundingBox CRS="EPSG:4326" minx="24.395386" miny="-171.959290" maxx="71.439209" maxy="-66.910767"/>
+<BoundingBox CRS="EPSG:4269" minx="24.395386" miny="-171.959290" maxx="71.439209" maxy="-66.910767"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[Submerged Lands Act Boundary]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=6" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+      </Layer>
+      <Layer queryable="1">
+        <Name>7</Name>
+        <Title><![CDATA[BOEM Limit of OCSLA 8(g) zone]]></Title>
+        <Abstract><![CDATA[The  Outer Continental Shelf Lands Act '8(g) Zone' lies between the Submerged Lands Act (SLA) boundary line and a line projected 3 nautical miles seaward of the SLA boundary line. Within this zone, oil and gas revenues are shared with the coastal state(s). The official version of the ‘8(g)’ Boundaries can only be found on the BOEM Official Protraction Diagrams (OPDs) or Supplemental Official Protraction described below.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-172.070801</westBoundLongitude><eastBoundLongitude>-66.951172</eastBoundLongitude><southBoundLatitude>24.345215</southBoundLatitude><northBoundLatitude>71.489014</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-172.070801" miny="24.345215" maxx="-66.951172" maxy="71.489014"/>
+<BoundingBox CRS="EPSG:4326" minx="24.345215" miny="-172.070801" maxx="71.489014" maxy="-66.951172"/>
+<BoundingBox CRS="EPSG:4269" minx="24.345215" miny="-172.070801" maxx="71.489014" maxy="-66.951172"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[BOEM Limit of OCSLA 8(g) zone]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=7" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+      </Layer>
+      <Layer queryable="1">
+        <Name>8</Name>
+        <Title><![CDATA[OCS Oil & Gas Pipelines]]></Title>
+        <Abstract><![CDATA[This dataset is a compilation of available oil and gas pipeline data and is maintained by BSEE. Pipelines are used to transport and monitor oil and/or gas from wells within the outer continental shelf (OCS) to resource collection locations. Currently, pipelines managed by BSEE are found in Gulf of America and southern California waters.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-120.730286</westBoundLongitude><eastBoundLongitude>96.238403</eastBoundLongitude><southBoundLatitude>0.013184</southBoundLatitude><northBoundLatitude>56.750427</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-120.730286" miny="0.013184" maxx="96.238403" maxy="56.750427"/>
+<BoundingBox CRS="EPSG:4326" minx="0.013184" miny="-120.730286" maxx="56.750427" maxy="96.238403"/>
+<BoundingBox CRS="EPSG:4269" minx="0.013184" miny="-120.730286" maxx="56.750427" maxy="96.238403"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[OCS Oil & Gas Pipelines]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=8" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+        <MaxScaleDenominator>8735643.028274</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="1">
+        <Name>9</Name>
+        <Title><![CDATA[OCS Oil and Natural Gas Wells]]></Title>
+        <Abstract><![CDATA[Existing wells drilled for exploration or extraction of oil and/or gas products. Additional information includes the lease number, well name, spud date, the well class, surface area/block number, and statistics on well status summary. Only wells found in federal Outer Continental Shelf (OCS) waters are included. Wells information is updated daily. Additional files are available on well completions and well tests. A database of wells is maintained by BSEE.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-97.203161</westBoundLongitude><eastBoundLongitude>0.000000</eastBoundLongitude><southBoundLatitude>0.000000</southBoundLatitude><northBoundLatitude>30.196125</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-97.203161" miny="0.000000" maxx="0.000000" maxy="30.196125"/>
+<BoundingBox CRS="EPSG:4326" minx="0.000000" miny="-97.203161" maxx="30.196125" maxy="0.000000"/>
+<BoundingBox CRS="EPSG:4269" minx="0.000000" miny="-97.203161" maxx="30.196125" maxy="0.000000"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[OCS Oil and Natural Gas Wells]]></Title>
+          <LegendURL width="18" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=9" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+        <MaxScaleDenominator>8735642.083333</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="1">
+        <Name>10</Name>
+        <Title><![CDATA[OCS Drilling Platforms]]></Title>
+        <Abstract><![CDATA[Locations of structures at and beneath the water surface used for the purpose of exploration and resource extraction. Only platforms in federal Outer Continental Shelf (OCS) waters are included. A database of platforms and rigs is maintained by BSEE.]]></Abstract>
+<CRS>CRS:84</CRS>
+<CRS>EPSG:4326</CRS>
+<CRS>EPSG:4269</CRS>
+<EX_GeographicBoundingBox><westBoundLongitude>-148.697693</westBoundLongitude><eastBoundLongitude>90.365601</eastBoundLongitude><southBoundLatitude>0.000000</southBoundLatitude><northBoundLatitude>70.490417</northBoundLatitude></EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-148.697693" miny="0.000000" maxx="90.365601" maxy="70.490417"/>
+<BoundingBox CRS="EPSG:4326" minx="0.000000" miny="-148.697693" maxx="70.490417" maxy="90.365601"/>
+<BoundingBox CRS="EPSG:4269" minx="0.000000" miny="-148.697693" maxx="70.490417" maxy="90.365601"/>
+        <Style>
+          <Name>default</Name>
+          <Title><![CDATA[OCS Drilling Platforms]]></Title>
+          <LegendURL width="19" height="18">
+            <Format>image/png</Format>
+            <OnlineResource xlink:href="https://gis.boem.gov/server/services/BOEM_BSEE/GOA_Layers/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=10" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </LegendURL>
+        </Style>
+        <MaxScaleDenominator>8735642.083333</MaxScaleDenominator>
+      </Layer>
+    </Layer>
+  </Capability>
+</WMS_Capabilities>

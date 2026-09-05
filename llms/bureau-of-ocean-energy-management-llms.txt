@@ -1,0 +1,90 @@
+# Bureau of Ocean Energy Management (BOEM)
+
+> BOEM is the US Department of the Interior bureau that manages development of the nation's
+> offshore energy and mineral resources on the Outer Continental Shelf (OCS). Its public data
+> surface is geospatial: an ArcGIS Server at gis.boem.gov publishing OCS leases, blocks,
+> boundaries, wells, platforms and pipelines for five regions through OGC WMS 1.3.0 and WFS
+> 2.0.0, plus two DCAT-US 1.1 open-data catalogs.
+
+Generated 2026-09-05 by API Evangelist from live probes of BOEM's own public surfaces. BOEM
+does not publish an llms.txt of its own (https://www.boem.gov/llms.txt returned 404 on
+2026-09-05); this file is generated, not harvested.
+
+## What you need to know before calling anything
+
+- No authentication. No API key, no signup, no account, no OAuth. Every surface answers anonymously.
+- No pricing, no plans, no quota. US federal public-domain data.
+- READ ONLY. Every service reports capabilities "Map,Query,Data" — there is no write, no delete
+  and nothing to undo.
+- The contract is OGC and Esri, NOT OpenAPI. There is no openapi.json anywhere on the estate.
+- PATH TRAP: the ArcGIS REST directory answers on both /arcgis/rest/services and
+  /server/rest/services, but the OGC endpoints answer ONLY under /server/services/.
+  /arcgis/services/... returns 404, and /arcgis/rest/services/<svc>/MapServer/WMSServer returns
+  an HTML page with HTTP 200 — a soft-200, not a capabilities document.
+- FORMAT TRAP: ArcGIS REST defaults to HTML. Always send f=json (or f=geojson). A request
+  without it returns markup with HTTP 200.
+- ERROR TRAP: ArcGIS returns HTTP 200 with an error object in the body —
+  {"error":{"code":400,"message":"Failed to execute query.","details":[]}}. Parse the body.
+- Paging: maxRecordCount is 10000 per query; page with resultOffset and resultRecordCount and
+  watch exceededTransferLimit in the response.
+- No rate limit is documented and no rate-limit header is emitted. Responses carry ETag with
+  must-revalidate — poll with If-None-Match.
+
+## Machine-readable contracts
+
+- ArcGIS REST service catalog: https://gis.boem.gov/server/rest/services?f=json (ArcGIS Server 11.3)
+- WMS 1.3.0 capabilities (per service): https://gis.boem.gov/server/services/{service}/MapServer/WMSServer?service=WMS&request=GetCapabilities
+- WFS 2.0.0 capabilities (per service): https://gis.boem.gov/server/services/{service}/MapServer/WFSServer?service=WFS&request=GetCapabilities
+- MarineCadastre.gov DCAT-US 1.1 catalog: https://hub.marinecadastre.gov/data.json (275 datasets)
+- ESPIS DCAT-US 1.1 catalog: https://esp-boem.hub.arcgis.com/data.json (11 datasets)
+
+## Services
+
+- BOEM_BSEE/AK_Layers — Alaska OCS region, 9 layers
+- BOEM_BSEE/ATL_Layers — Atlantic OCS region, 7 layers
+- BOEM_BSEE/GOA_Layers — Gulf of America OCS region, 11 layers
+- BOEM_BSEE/MMC_Layers — Marine Minerals / multipurpose composite, 18 layers
+- BOEM_BSEE/POC_Layers — Pacific OCS region, 10 layers (WFS endpoint returned HTTP 400 on 2026-09-05)
+- AtlanticFishGuide/Atlantic_Coast_Fishing_Atlas — Atlantic Coast Fishing Atlas, 5 layers
+- Also published: regional monthly offshore wind speed, Gulf of America deepwater bathymetry
+  and contours, USGS/BOEM PACSEA seabird density, West Coast fishing, West Coast canopy-forming kelp
+
+## Recurring layers
+
+Seven entities repeat across the five OCS regions: OCS Oil and Natural Gas Wells,
+OCS Drilling Platforms, OCS Oil & Gas Pipelines, BOEM Limit of OCSLA 8(g) zone,
+Submerged Lands Act Boundary, BOEM OCS Protraction Diagrams & Leasing Maps,
+BOEM OCS Lease Blocks, BOEM Oil and Gas Leases, BOEM Oil and Gas Planning Areas.
+Layer ids are NOT contiguous and NOT portable between services — resolve a layer by name from
+the MapServer document, never by a hard-coded id.
+
+## Worked example
+
+Count Atlantic OCS oil and gas wells:
+  https://gis.boem.gov/server/rest/services/BOEM_BSEE/ATL_Layers/MapServer/1/query?where=1%3D1&returnCountOnly=true&f=json
+
+## Documentation
+
+- Mapping and data (oil and gas): https://www.boem.gov/oil-gas-energy/mapping-and-data
+- Maps and GIS data (renewable energy): https://www.boem.gov/renewable-energy/mapping-and-data
+- Additional sources for offshore data: https://www.boem.gov/oil-gas-energy/mapping-and-data/additional-sources-offshore-data
+- MarineCadastre.gov: https://marinecadastre.gov/
+- OceanReports analysis tool: https://marinecadastre.gov/oceanreports
+- ESPIS environmental studies hub: https://esp-boem.hub.arcgis.com/
+- data.gov datasets: https://catalog.data.gov/dataset?organization=boem-gov
+
+## Policy
+
+- Copyright, restrictions and permissions: https://www.boem.gov/about-boem/copyright-restrictions-and-permissions
+- Disclaimer of liability and endorsement: https://www.boem.gov/about-boem/disclaimer-liability-and-endorsement
+- Privacy policy (Department of the Interior): https://www.doi.gov/privacy
+- Vulnerability disclosure policy: https://www.doi.gov/vulnerability-disclosure-policy
+- security.txt: https://www.boem.gov/.well-known/security.txt (served, but Expires lapsed 2025-12-01)
+- Contact: https://www.boem.gov/about-boem/contact-us
+
+## What BOEM does not publish
+
+No OpenAPI. No AsyncAPI, webhooks or event stream. No MCP server. No A2A agent card. No SDKs or
+client libraries. No CLI. No Postman collection. No developer portal, changelog, status page,
+SLA, deprecation policy or versioning policy. No GitHub organisation. There is no technical
+support channel — only the general agency contact page.
