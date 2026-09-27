@@ -4,7 +4,7 @@ url: >-
 name: Bureau of Ocean Energy Management
 tags:
   - Energy
-  - Federal-Government
+  - Federal Government
   - Marine
   - Ocean
   - GIS
@@ -18,6 +18,7 @@ tags_raw:
   - GIS
   - Offshore
   - Environmental
+  - Federal-Government
 type: Index
 kind: government
 deliveryModel:
@@ -58,7 +59,7 @@ apis:
   - aid: bureau-of-ocean-energy-management:marine-cadastre
     name: MarineCadastre.gov
     tags:
-      - Federal-Government
+      - Federal Government
       - Marine
       - GIS
       - Ocean
@@ -67,6 +68,7 @@ apis:
       - Marine
       - GIS
       - Oceans
+      - Federal-Government
     humanURL: https://marinecadastre.gov/
     baseURL: https://hub.marinecadastre.gov/
     properties:
@@ -97,7 +99,7 @@ apis:
   - aid: bureau-of-ocean-energy-management:boem-arcgis-rest-services
     name: BOEM ArcGIS REST Services
     tags:
-      - Federal-Government
+      - Federal Government
       - GIS
       - Ocean
       - Offshore
@@ -106,6 +108,7 @@ apis:
       - GIS
       - Oceans
       - Offshore
+      - Federal-Government
     humanURL: https://www.boem.gov/oil-gas-energy/mapping-and-data
     baseURL: https://gis.boem.gov/arcgis/rest/services/
     properties:
@@ -163,13 +166,14 @@ apis:
   - aid: bureau-of-ocean-energy-management:espis
     name: Environmental Studies Program Information System (ESPIS)
     tags:
-      - Federal-Government
+      - Federal Government
       - Environmental
       - Marine
     tags_raw:
       - Federal Government
       - Environmental
       - Marine
+      - Federal-Government
     humanURL: https://esp-boem.hub.arcgis.com/
     baseURL: https://esp-boem.hub.arcgis.com/
     properties:
