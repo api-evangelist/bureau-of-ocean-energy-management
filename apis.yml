@@ -197,6 +197,8 @@ apis:
       - Academic marine research
       - Policy development
 common:
+  - type: FinOps
+    url: finops/bureau-of-ocean-energy-management-finops.yml
   - type: VulnerabilityDisclosure
     url: security/bureau-of-ocean-energy-management-vulnerability-disclosure.yml
   - type: DomainSecurity
