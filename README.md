@@ -1,4 +1,4 @@
-# Bureau of Ocean Energy Management (bureau-of-ocean-energy-management)
+# Bureau of Ocean Energy Management
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,99 +66,150 @@
 
 The Bureau of Ocean Energy Management (BOEM) manages the nation's offshore resources in an environmentally and economically responsible way. BOEM oversees the responsible development of U.S. Outer Continental Shelf energy and mineral resources while protecting the environment and conserving natural resources.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/bureau-of-ocean-energy-management/refs/heads/main/apis.yml)
+**Areas:** Energy · Federal Government · Marine · Ocean · GIS · Offshore · Environmental
 
-## Scope
+## Bureau of Ocean Energy Management on APIs.io
 
-- **Type:** Index
-- **x-type:** government
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Bureau of Ocean Energy Management is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bureau-of-ocean-energy-management/](https://apis.io/providers/bureau-of-ocean-energy-management/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Energy
-- Federal Government
-- Marine
-- Oceans
-- GIS
-- Offshore
-- Environmental
+- [BOEM ArcGIS REST Services](https://apis.io/apis/bureau-of-ocean-energy-management/boem-arcgis-rest-services/) — BOEM provides ArcGIS REST Services exposing geospatial data for the Outer Continental Shelf (OCS) regions. Data includes active leases, offshore block…
+- [Environmental Studies Program Information System (ESPIS)](https://apis.io/apis/bureau-of-ocean-energy-management/espis/) — ESPIS provides access to BOEM's environmental studies data, including research reports, environmental impact studies, and scientific literature related to…
+- [Bureau of Ocean Energy Management Catalog API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-catalog-api/) — The Catalog API from Bureau of Ocean Energy Management — 1 operation(s) for catalog.
+- [Bureau of Ocean Energy Management Collection API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-collection-api/) — The Collection API from Bureau of Ocean Energy Management — 2 operation(s) for collection.
+- [Bureau of Ocean Energy Management Geoservice Beta API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-geoservice-beta-api/) — The Geoservice-Beta API from Bureau of Ocean Energy Management — 6 operation(s) for geoservice-beta.
+- [Bureau of Ocean Energy Management Ogc Item API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-ogcitem-api/) — The OgcItem API from Bureau of Ocean Energy Management — 4 operation(s) for ogcitem.
+- [Bureau of Ocean Energy Management Ogc Item Aggregation API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-ogcitemaggregation-api/) — The OgcItemAggregation API from Bureau of Ocean Energy Management — 1 operation(s) for ogcitemaggregation.
+- [Bureau of Ocean Energy Management Ogc Root API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-ogcroot-api/) — The OgcRoot API from Bureau of Ocean Energy Management — 1 operation(s) for ogcroot.
+- [Bureau of Ocean Energy Management Ogc Root Conformance API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-ogcrootconformance-api/) — The OgcRootConformance API from Bureau of Ocean Energy Management — 1 operation(s) for ogcrootconformance.
+- [Bureau of Ocean Energy Management Queryable API](https://apis.io/apis/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-queryable-api/) — The Queryable API from Bureau of Ocean Energy Management — 1 operation(s) for queryable.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-30
-- **Modified:** 2026-04-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### MarineCadastre.gov
-The authoritative source for marine cadastre data and services. Provides an interactive map viewer with integrated submerged lands information including legal, property ownership (cadastre), physical, biological, ocean uses, and cultural information. Includes Web Map Services (WMS) for GIS integration.
+Model Context Protocol servers that expose the API to agents.
 
-**Human URL:** [https://marinecadastre.gov/](https://marinecadastre.gov/)
+- [bureau-of-ocean-energy-management-mcp.yml](https://apis.io/servers/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-mcp-yml/)
 
-**Base URL:** https://hub.marinecadastre.gov/
+#### Agentic access (1)
 
-#### Features
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Web Map Services (WMS)
-- Interactive Map Viewer
-- OceanReports Analysis Tool
-- AIS Vessel Traffic Data
-- Downloadable Geospatial Layers
-- Legal and Cadastral Data
+- [Bureau Of Ocean Energy Management Agentic Access](https://apis.io/agentic-access/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-agentic-access/)
 
-#### Use Cases
+#### JSON Schema (6)
 
-- Offshore energy project planning
-- Marine spatial planning
-- Environmental impact assessment
-- Coastal and ocean use analysis
+The data models the API reads and writes.
 
-### BOEM ArcGIS REST Services
-BOEM provides ArcGIS REST Services exposing geospatial data for the Outer Continental Shelf (OCS) regions including active leases, offshore block grids, boundaries, wells, and pipelines.
+- [CollectionWithLinksDto](https://apis.io/schemas/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-collection-with-links-dto/)
+- [FeatureLayerDto](https://apis.io/schemas/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-feature-layer-dto/)
+- [FeatureLayerQueryDto](https://apis.io/schemas/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-feature-layer-query-dto/)
+- [FeatureServerDto](https://apis.io/schemas/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-feature-server-dto/)
+- [OgcItemDto](https://apis.io/schemas/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-ogc-item-dto/)
+- [OgcQueryablesResponseDto](https://apis.io/schemas/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-ogc-queryables-response-dto/)
 
-**Human URL:** [https://www.boem.gov/oil-gas-energy/mapping-and-data](https://www.boem.gov/oil-gas-energy/mapping-and-data)
+#### JSON-LD (1)
 
-**Base URL:** https://gis.boem.gov/arcgis/rest/services/
+Linked-data contexts for the provider's vocabulary.
 
-#### Features
+- [Bureau Of Ocean Energy Management Context](https://apis.io/jsonld/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-context/)
 
-- Active Lease Boundaries
-- Offshore Block Grids
-- Pipeline Data
-- Well Locations
-- OCS Planning Areas
-- Regional Shapefiles
+#### Governance rules (1)
 
-#### Use Cases
+Spectral rulesets for the provider's contracts.
 
-- Offshore drilling planning
-- Lease management
-- Environmental review
-- Marine infrastructure mapping
+- [Bureau of Ocean Energy Management API Rules](https://apis.io/rules/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-rules/)
 
-### Environmental Studies Program Information System (ESPIS)
-ESPIS provides access to BOEM's environmental studies data, including research reports, environmental impact studies, and scientific literature related to offshore energy development.
+#### Security (3)
 
-**Human URL:** [https://esp-boem.hub.arcgis.com/](https://esp-boem.hub.arcgis.com/)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Features
+- [Bureau Of Ocean Energy Management Authentication](https://apis.io/security/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-authentication/)
+- [Bureau Of Ocean Energy Management Domain Security](https://apis.io/security/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-domain-security/)
+- [Bureau Of Ocean Energy Management Vulnerability Disclosure](https://apis.io/security/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-vulnerability-disclosure/)
 
-- Environmental Studies Database
-- Research Reports
-- Scientific Literature
-- Geographic Search
+#### Plans and pricing (1)
 
-## Common Properties
+Published plans, tiers and prices.
+
+- [Bureau Of Ocean Energy Management Plans Pricing](https://apis.io/plans/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Bureau Of Ocean Energy Management Rate Limits](https://apis.io/rate-limits/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Bureau Of Ocean Energy Management Finops](https://apis.io/finops/bureau-of-ocean-energy-management/bureau-of-ocean-energy-management-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.boem.gov)
-- [Portal](https://marinecadastre.gov/)
-- [Privacy Policy](https://www.boem.gov/privacy-policy)
-- [Mapping and Data](https://www.boem.gov/oil-gas-energy/mapping-and-data)
-- [Data Portal](https://catalog.data.gov/dataset?organization=boem-gov)
+- [Documentation](https://www.boem.gov/oil-gas-energy/mapping-and-data)
+- [Support](https://www.boem.gov/about-boem/contact-us)
+- [Blog](https://www.boem.gov/rss.xml)
+- [Terms of service](https://www.boem.gov/about-boem/disclaimer-liability-and-endorsement)
+- [Privacy policy](https://www.doi.gov/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 46.7** — developing · rubric 0.24.0 · scored 2026-10-20
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 51.9 |
+| Contract governance | 72.7 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 21.1 |
+
+**Agent readiness 29.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | unknown |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 25.4** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bureau-of-ocean-energy-management/](https://apis.io/providers/bureau-of-ocean-energy-management/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Bureau of Ocean Energy Management: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bureau-of-ocean-energy-management/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
